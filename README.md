@@ -7,6 +7,12 @@
 |  2018년 7월 27일 | How to customize 추가  | 김석환  |  사용자  |
 |  2018년 7월 27일 | SATES 소개 추가  | 김석환  |  사용자  |
 |  2018년 8월 1일 | SATES 로 가능한 일 추가  | 김석환  |  사용자  |
+|  2018년 8월 1일 | SATES 결과물 섹션을 가장 앞에 추가 | 김석환  |  사용자  |
+
+# SATES 결과물
+SATES 를 이용하면 사용자는 아래와 같은 문서를 작성할 수 있다.
+- [HTML](https://github.com/seokhwan/sates/tree/master/docs/doxygen/html/index.html)
+- [CHM 다운로드](https://github.com/seokhwan/sates/tree/master/docs/doxygen/sates.chm)
 
 # SATES 소개
 ## SATES (Spec And Test Engineering System) 란?
