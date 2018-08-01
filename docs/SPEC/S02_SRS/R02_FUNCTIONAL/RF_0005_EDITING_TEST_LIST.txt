@@ -1,0 +1,51 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+Editing test list
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+You can include or exclude test cases from the list.
+Specifically, it works as follows.
+
+case 1: 
+included list size > 0 
+then : then: only cases in the Included list are executed
+
+case 2:
+included list size = 0 &&
+excluded list size > 0
+then: all cases excpet in the Excluded list are executed
+
+case 3:
+included list size = 0 &&
+excluded list size = 0
+then: all cases are executed
+
+* no case can be in both included and excluded list.
+
+@benefit
+
+@penalty
+
+@cost
+
+@risk
+
+@parent_spec
+
+@child_spec
+
+@test
+
+@fmea
+
+@constraint
+

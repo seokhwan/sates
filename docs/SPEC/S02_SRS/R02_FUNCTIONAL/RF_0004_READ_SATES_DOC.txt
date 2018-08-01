@@ -1,0 +1,35 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+Reading the sates doc
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+The SATES shall be able to read this document (i.e., RF_0004_READ_SATES_DOC.cpp).
+And, it parses the document and makes an instance that includes all information
+in the document.
+
+@benefit
+
+@penalty
+
+@cost
+
+@risk
+
+@parent_spec
+
+@child_spec
+
+@test
+
+@fmea
+
+@constraint

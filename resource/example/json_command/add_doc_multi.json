@@ -1,0 +1,14 @@
+[
+    {
+        "api":"doc_add",
+        "args":["TEST_SPEC01", "spec", "cat1", "cat2"]
+    },
+    {
+        "api":"doc_add",
+        "args":["TEST_SPEC02", "fmea", "cat01", "cat02"]
+    },
+    {
+        "api":"doc_add",
+        "args":["TEST_SPEC03", "testcase", "cat001", "cat002"]
+    }
+]

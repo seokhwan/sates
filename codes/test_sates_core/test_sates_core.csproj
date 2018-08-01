@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>TESTCODE</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\build\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\build\Release</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="T03_ACCEPTANCE\" />
+    <Folder Include="T02_INTEGRATION\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\sates_core\sates_core.csproj" />
+    <ProjectReference Include="..\sates_test_cs\sates_test_cs.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,41 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@uml
+package sates_core {
+    package algorithm {}
+    package core 
+    {
+        class doc
+    }
+    package input {}
+    package output {}
+}
+
+package sates_test_cs {}
+
+package sates_test_cpp {}
+
+package sates_test_other_languages {}
+
+algorithm ..> core
+input ..> core
+output ..> core
+
+sates_test_cs ..> input
+sates_test_cpp ..> input
+sates_test_other_languages ..> input
+
+@desc
+sates_core 에는 doc 클래스가 있다. (sates.core.doc)
+RF_0001_ADD_DOC 요구사항을 충족하기 위해 추가되는 모든 문서는
+sates.core.doc 의 instance 에 저장된다. 
+
+크게 sates.core.doc 클래스는 uniq_id, doc_type 을 포함하여
+문서의 unique 한 ID (대부분의 ISO 표준에서 요구하는 사항) 및
+문서의 종류 (예: SPEC 또는 test case) 를 포함하고,
+또한, 정보의 리스트를 유지한다. (sates.core.info)
+
+

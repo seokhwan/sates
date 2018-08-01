@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>sates.test.cs</RootNamespace>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP2_0;NETCOREAPP2_0;SATES_FRAMEWORK</DefineConstants>
+    <OutputPath>..\..\build\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;NETCOREAPP2_0;RELEASE;NETCOREAPP2_0;SATES_FRAMEWORK</DefineConstants>
+    <OutputPath>..\..\build\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\sates_core\sates_core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+[
+    {
+        "api":"doc_add",
+        "args":[
+            "TEST_SPEC01", "spec","cat1", "cat2"
+        ]
+    }
+]

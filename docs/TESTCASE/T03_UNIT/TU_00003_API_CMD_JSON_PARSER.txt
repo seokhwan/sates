@@ -1,0 +1,22 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 31일 | 문서작성  | 김석환  |  사용자  |
+
+@title
+JSON 형식의 API 커맨드 데이터의 파싱을 검사
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+파싱검사
+
+
+@ret_code
+- sates.input.api_cmd_json_parser
+
+@ret_spec
+

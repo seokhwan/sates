@@ -1,0 +1,22 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 31일 | 문서작성  | 김석환  |  사용자  |
+
+@title
+sates.test.cs.test_result_reporter_josn 검사
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+sates.test.cs.test_result_reporter_josn 검사
+
+
+@ret_code
+- sates.test.cs.test_result_reporter_josn
+
+@ret_spec
+

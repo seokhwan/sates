@@ -1,0 +1,49 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@uml
+
+package sates_core {
+    package core
+    {
+    }
+    package input
+    {
+        package sates_doc
+        {
+            class dir_reader
+            class file_parser
+            class file_reader
+            class item_data
+            class category
+        }
+    }
+}
+
+dir_reader --> file_reader
+file_reader --> file_parser
+file_reader --> category
+file_parser --> item_data
+
+input --> core
+
+@desc
+위의 그림은 doxygen 타입의 문서 (일명 sates doc) 을 읽는 
+sates.core.sates_doc 패키지의 구조를 보여준다.
+기본적으로 directory 및 file 자체를 읽는 dir_reader,
+file_reader가 있고, file_reader 는 file_parser 와 
+category 추출을 담당하는 category 클래스, 각 tag 와
+데이터를 쌍으로 저장하는 item_data 를 활용한다.
+
+이렇게 읽은 데이터는 데이터를 관리하는 주체인 core 로 
+넘겨진다.
+
+@ret_code
+- sates.input.sates_doc.dir_reader
+- sates.input.sates_doc.file_reader
+- sates.input.sates_doc.file_parser
+- sates.input.sates_doc.category
+- sates.input.sates_doc.item_data
+

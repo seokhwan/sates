@@ -1,0 +1,29 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@uml
+package sates_core {
+    package algorithm {}
+    package core {}
+    package input {}
+    package output {}
+}
+
+package sates_test_cs {}
+
+package sates_test_cpp {}
+
+package sates_test_other_languages {}
+
+algorithm ..> core
+input ..> core
+output ..> core
+
+sates_test_cs ..> input
+sates_test_cpp ..> input
+sates_test_other_languages ..> input
+
+@desc
+위 UML 은 전체 시스템 구성도를 보여준다.

@@ -1,0 +1,41 @@
+﻿@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+SPEC (specification) 추가 및 관련 SPEC 과의 맵핑
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+V-Model (https://en.wikipedia.org/wiki/V-Model_(software_development)) 을 보면,
+SPEC 과 테스트는 모두 단계를 가지고 있다. 예를 들어, business requirement 는 
+최상위 SPEC 이며, SRS 및 SW designs 은 그 하위의 SPEC 이다. 
+
+즉, 하나의 business requirement 는 몇 개의 SRS 를 통해서 구현되며,
+SW Design 은 SRS 를 충족시키기 위한 최적화된 디자인을 제시한다. 
+
+SPEC 을 추가하는 활동은 단순히 해당 SPEC 의 추가 뿐만 아니라,
+해당 SPEC 이 상위로는 어떤 SPEC 과 그리고 하위로는 또 어떤 SPEC 과
+연관이 되는지 해당 정보를 제공해야 한다.
+
+우리는 이를 상위 (parent) 또는 하위 (child) SPEC 이라고 표현하고,
+아래 보이는 UML 의 Use Case 다이어그램과 같이 표현한다.
+
+@uml
+User -> (adds a specification)
+User -> (adds parent specifications)
+User -> (adds child specifications)
+
+@parent_spec
+
+@child_spec
+RF_0001_SPEC_PROPERTY_SETTING
+
+@test
+
+

@@ -1,0 +1,23 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 31일 | 문서작성  | 김석환  |  사용자  |
+
+@title
+TCP/IP 소켓 활용 스트링 전송
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+Local port 를 오픈 후, 샘플 스트링을 전송하여
+해당 스트링이 올바르게 전송되었는지 검사한다.
+
+
+@ret_code
+- sates.util.string_transfer
+
+@ret_spec
+

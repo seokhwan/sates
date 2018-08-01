@@ -1,0 +1,35 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+Extensible Algorithms
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+The algorithms shall be extensible. Users shall be able to add new variables
+and algorithms that process an another values from the new variables.
+    
+
+@benefit
+
+@penalty
+
+@cost
+
+@risk
+
+@parent_spec
+
+@child_spec
+
+@test
+
+@fmea
+
+@constraint

@@ -1,0 +1,29 @@
+﻿@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+
+@title
+SPEC (Specification) 관리
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+SPEC이란, Business Requirement, Use Case, SRS (Software Requirement Specification) 등
+Software 를 정의 (define, specify) 하는 모든 문서를 의미한다.
+
+Software 를 정의 (define) 한다는 것은 software 가 어떤 기능을 어떻게
+수행한다는 것을 명세하는 것이다. SPEC 이런 모든 정보를 포함해야 한다. 
+
+SPEC 의 관리란, 이러한 SPEC 간의 관계의 맵핑을 제공하는 것이다.
+위에 열거한 SPEC 들 (Business Requirement, Use Case, SRS 등) 은
+서로 밀접한 관계를 맺는다. 
+
+
+@child_spec
+- DOC.SPEC.S01_BIZ_REQ.BR_0002_TEST_MGMT
+

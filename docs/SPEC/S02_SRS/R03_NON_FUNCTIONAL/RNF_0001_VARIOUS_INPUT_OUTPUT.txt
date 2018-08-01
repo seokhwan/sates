@@ -1,0 +1,35 @@
+﻿@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+Various input and output types
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+The SATES shall be able to get input with different type (e.g., xml, json, or code)
+and, also generates a report at different format (e.g., xml, json, or doxygen)
+    
+
+@benefit
+
+@penalty
+
+@cost
+
+@risk
+
+@parent_spec
+
+@child_spec
+
+@test
+
+@fmea
+
+@constraint

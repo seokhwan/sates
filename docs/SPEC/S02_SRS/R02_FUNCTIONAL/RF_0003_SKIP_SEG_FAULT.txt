@@ -1,0 +1,39 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+It skips even if a segmentation fault occurs
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+Test case is a software. Therefore, it can be buggy and a segmentation 
+fault occurs. Even so, it is very unfortune if we cannot run all test
+cases. Generally running all test cases take at least a few minutes 
+or several hours. So, the developers are away after running the test.
+To be more convenient, the SATES shall skip a test case even if the
+test software makes segmentation fault.
+    
+
+@benefit
+
+@penalty
+
+@cost
+
+@risk
+
+@parent_spec
+
+@child_spec
+
+@test_case
+
+@fmea
+
+@constraint
