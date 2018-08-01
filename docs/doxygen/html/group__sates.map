@@ -1,9 +1,0 @@
-<map id="sates" name="sates">
-<area shape="rect" id="node1" href="$group__util.html" title="util" alt="" coords="233,5,271,32"/>
-<area shape="rect" id="node2" href="$group___c_o_d_e.html" title="CODE" alt="" coords="5,132,64,159"/>
-<area shape="rect" id="node4" href="$group__output.html" title="output" alt="" coords="223,56,281,83"/>
-<area shape="rect" id="node5" href="$group__test.html" title="test" alt="" coords="230,107,274,133"/>
-<area shape="rect" id="node6" href="$group__input.html" title="input" alt="" coords="227,157,277,184"/>
-<area shape="rect" id="node7" href="$group__algorithm.html" title="algorithm" alt="" coords="215,208,289,235"/>
-<area shape="rect" id="node8" href="$group__core.html" title="core" alt="" coords="229,259,275,285"/>
-</map>

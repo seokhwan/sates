@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classsates_1_1output_1_1custom_1_1custom__info__writer.html" title="write 중 특수한 tag 의 경우 custom 한 output 지원을 위한 interface " alt="" coords="5,35,193,76"/>
-<area shape="rect" id="node2" href="$classsates_1_1output_1_1custom_1_1writer__revision.html" title="revision 은 table 이기 때문에 멀티라인에 \n 을 붙히지 않도록 한다. " alt="" coords="255,5,431,47"/>
-<area shape="rect" id="node3" href="$classsates_1_1output_1_1custom_1_1writer__uml.html" title="plantuml 지원을 위해 @startuml, @enduml 태그를 작성한다. " alt="" coords="241,71,445,98"/>
-</map>

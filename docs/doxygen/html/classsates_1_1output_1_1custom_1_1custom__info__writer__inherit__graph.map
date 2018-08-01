@@ -1,4 +1,0 @@
-<map id="sates.output.custom.custom_info_writer" name="sates.output.custom.custom_info_writer">
-<area shape="rect" id="node2" href="$classsates_1_1output_1_1custom_1_1writer__revision.html" title="revision 은 table 이기 때문에 멀티라인에 \n 을 붙히지 않도록 한다. " alt="" coords="5,145,181,252"/>
-<area shape="rect" id="node3" href="$classsates_1_1output_1_1custom_1_1writer__uml.html" title="plantuml 지원을 위해 @startuml, @enduml 태그를 작성한다. " alt="" coords="206,153,410,245"/>
-</map>
