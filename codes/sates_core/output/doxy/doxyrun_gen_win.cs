@@ -29,6 +29,7 @@ namespace sates.output.doxy
     |  날짜  | 내용  | 담당자   | 검수자  | 
     |------------|------------|------------|------------|
     |2018년 8월 1일 | 클래스 추가 | 김석환  |  사용자  |
+    |2018년 8월 1일 | chm, html 을 분리. 코드 품질 좋지 않음. 향 후, refactoring 필요 | 김석환  |  사용자  |
      */
 
     /// <summary>
@@ -40,16 +41,26 @@ namespace sates.output.doxy
         {
             deps_os_path = System.IO.Path.GetFullPath(deps_os_path);
             out_dir = System.IO.Path.GetFullPath(out_dir);
-            string batname = out_dir + "\\doxyrun.bat";
-            System.IO.StreamWriter wr = new System.IO.StreamWriter(batname);
-            wr.WriteLine("SET PATH=%PATH%;" + deps_os_path + "\\graphviz-2.38\\bin");
-            wr.WriteLine("SET GRAPHVIZ_DOT=" + deps_os_path + "\\graphviz-2.38\\bin\\dot.exe");
-            wr.WriteLine("SET DOT_PATH=" + deps_os_path + "\\graphviz-2.38\\bin\\dot.exe");
-            wr.WriteLine(deps_os_path + "\\doxygen-1.8.14\\doxygen.exe sates_doxy");
-            wr.Close();
+            string batname_chm = out_dir + "\\doxyrun_chm.bat";
+            string batname_html = out_dir + "\\doxyrun_html.bat";
+            System.IO.StreamWriter wr_chm = new System.IO.StreamWriter(batname_chm);
+            wr_chm.WriteLine("SET PATH=%PATH%;" + deps_os_path + "\\graphviz-2.38\\bin");
+            wr_chm.WriteLine("SET GRAPHVIZ_DOT=" + deps_os_path + "\\graphviz-2.38\\bin\\dot.exe");
+            wr_chm.WriteLine("SET DOT_PATH=" + deps_os_path + "\\graphviz-2.38\\bin\\dot.exe");
+            wr_chm.WriteLine(deps_os_path + "\\doxygen-1.8.14\\doxygen.exe sates_doxy_chm");
+            wr_chm.Close();
 
-            string doxy_filename = out_dir + "\\sates_doxy";
-            doxyrun_gen_common.doxyfilegen(deps_common_path, doxy_resource_path, doxy_filename, out_dir);
+
+            System.IO.StreamWriter wr_html = new System.IO.StreamWriter(batname_html);
+            wr_html.WriteLine("SET PATH=%PATH%;" + deps_os_path + "\\graphviz-2.38\\bin");
+            wr_html.WriteLine("SET GRAPHVIZ_DOT=" + deps_os_path + "\\graphviz-2.38\\bin\\dot.exe");
+            wr_html.WriteLine("SET DOT_PATH=" + deps_os_path + "\\graphviz-2.38\\bin\\dot.exe");
+            wr_html.WriteLine(deps_os_path + "\\doxygen-1.8.14\\doxygen.exe sates_doxy_html");
+            wr_html.Close();
+
+            string doxy_filename_chm = out_dir + "\\sates_doxy_chm";
+            string doxy_filename_html = out_dir + "\\sates_doxy_html";
+            doxyrun_gen_common.doxyfilegen(deps_common_path, doxy_resource_path, doxy_filename_chm, doxy_filename_html, out_dir);
         }
     }
     /** @} */

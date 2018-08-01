@@ -29,6 +29,7 @@ namespace sates.output.doxy
     |  날짜  | 내용  | 담당자   | 검수자  | 
     |------------|------------|------------|------------|
     |2018년 8월 1일 | Cross Platform 에 공통되는 부분  | 김석환  |  사용
+    |2018년 8월 1일 | chm, html 분리. 코드 품질 下, 향 후 refactoring 필수  | 김석환  |  사용
      */
 
     /// <summary>
@@ -36,14 +37,30 @@ namespace sates.output.doxy
     /// </summary>
     public abstract class doxyrun_gen_common
     {
-        public static void doxyfilegen(string depts_common_path, string doxy_resource_path, string output_path, string out_dir)
+        public static void doxyfilegen(string depts_common_path, string doxy_resource_path, string doxy_fillename_chm, string doxy_fillename_html, string out_dir)
         {
             doxy_resource_path = System.IO.Path.GetFullPath(doxy_resource_path);
-            string doxyfile = doxy_resource_path + "/sates_doxy";
+            string doxyfile = doxy_resource_path + "/sates_doxy_chm";
             var lines = System.IO.File.ReadAllLines(doxyfile);
-            System.IO.StreamWriter wr = new System.IO.StreamWriter(output_path);
+            
+            System.IO.StreamWriter wr = new System.IO.StreamWriter(doxy_fillename_chm);
 
             wr.WriteLine("SET PLANTUML_JAR_PATH=" + depts_common_path 
+                + sates.core.os_setting.DIR_SEPARATOR + "plantuml-1.2018.8"
+                + sates.core.os_setting.DIR_SEPARATOR + "plantuml.jar");
+
+            foreach (var line in lines)
+            {
+                wr.WriteLine(line);
+            }
+            wr.Close();
+
+
+            doxyfile = doxy_resource_path + "/sates_doxy_html";
+            lines = System.IO.File.ReadAllLines(doxyfile);
+            wr = new System.IO.StreamWriter(doxy_fillename_html);
+
+            wr.WriteLine("SET PLANTUML_JAR_PATH=" + depts_common_path
                 + sates.core.os_setting.DIR_SEPARATOR + "plantuml-1.2018.8"
                 + sates.core.os_setting.DIR_SEPARATOR + "plantuml.jar");
 

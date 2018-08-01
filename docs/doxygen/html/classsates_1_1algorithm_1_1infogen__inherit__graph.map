@@ -1,0 +1,5 @@
+<map id="sates.algorithm.infogen" name="sates.algorithm.infogen">
+<area shape="rect" id="node2" href="$classsates_1_1algorithm_1_1fmea__critical__number.html" title="fmea 문서의 critical number 계산 " alt="" coords="5,145,171,252"/>
+<area shape="rect" id="node3" href="$classsates_1_1algorithm_1_1fmea__rpn.html" title="fmea 문서의 risk priority number 계산 " alt="" coords="195,153,363,245"/>
+<area shape="rect" id="node4" href="$classsates_1_1algorithm_1_1fmea__sod.html" title="fmea 문서의 severity, occurrence, detection 계산 " alt="" coords="387,153,557,245"/>
+</map>
