@@ -14,7 +14,7 @@ SATES 는 제목 그대로 Spec And Test Engineering System 의 약자이다. �
 
 SATES 는 아래 보이는 V-Model 의 문서화 지원을 목적으로 한다.
 
-![Alt text](./readme_img/vmodel_img.png "V Model 개념도, 출처 : https://en.wikipedia.org/wiki/V-Model_(software_development)")
+![Alt text](https://github.com/seokhwan/sates/trunk/docs/readme_img/vmodel_img.png "V Model 개념도, 출처 : https://en.wikipedia.org/wiki/V-Model_(software_development)")
 
 
 구체적으로 
