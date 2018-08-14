@@ -1,0 +1,47 @@
+[
+    {
+        "api":"test_result_set",
+        "args":
+        [
+            "TU_00001_STRING_TRANSFER",
+            "FAILURE",
+            "FAIL, filename : D:\\bsd\\sates\\codes\\test_sates_core\\T01_UNIT\\TU_00001_STRING_TRANSFER.cs, method name : TESTCODE.T01_UNIT.TU_00001_STRING_TRANSFER.run(), line : 61"
+        ],
+        "reserved1":null,
+        "reserved2":null,
+        "reserved3":null
+    },
+    {
+        "api":"test_result_set",
+        "args":
+        [
+            "TU_00002_FILE_TRANSFER",
+            "OK"
+        ],
+        "reserved1":null,
+        "reserved2":null,
+        "reserved3":null
+    },
+    {
+        "api":"test_result_set",
+        "args":
+        [
+            "TU_00003_API_CMD_JSON_PARSER",
+            "OK"
+        ],
+        "reserved1":null,
+        "reserved2":null,
+        "reserved3":null
+    },
+    {
+        "api":"test_result_set",
+        "args":
+        [
+            "TU_00004_TEST_RESULT_REPORTER_JSON",
+            "OK"
+        ],
+    "reserved1":null,
+    "reserved2":null,
+    "reserved3":null
+    }
+]

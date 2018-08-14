@@ -9,6 +9,9 @@
 |  2018년 8월 1일 | SATES 로 가능한 일 추가  | 김석환  |  사용자  |
 |  2018년 8월 1일 | SATES 결과물 섹션을 가장 앞에 추가 | 김석환  |  사용자  |
 |  2018년 8월 11일 | SPEC 및 테스트에 대한 설명 추가 | 김석환  |  사용자  |
+|  2018년 8월 13일 | Visual Studio 관련 개발환경 내용 추가 | 김석환  |  사용자  |
+|  2018년 8월 14일 | SATES 시스템 flow 및 예제 추가 | 김석환  |  사용자  |
+ 
 
 # SATES 결과물
 SATES 를 이용하면 사용자는 아래와 같은 문서를 작성할 수 있다.
@@ -35,7 +38,402 @@ SATES 는 아래 보이는 V-Model 의 문서화 지원을 목적으로 한다.
 - CSharp, C/C++(개발 필요) 유닛 테스트
 - SPEC, 테스트 케이스, 테스트 코드, Source 코드 간의 맵핑 문서 생성
 
-## SATES 개발 배경
+## SATES 시스템 flow 및 예제
+![Alt text](resource/img/readme_img/sates_big_picture.png "SATES 시스템 개념도")
+
+SATES 시스템은 위의 그림 (a) 박스에 표기된 것과 같이 doxygen 스타일의 텍스트 문서 혹은 json 형식의 커맨드를 입력받는다. Doxygen 스타일의 문서란 아래의 예와 같다.
+~~~
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+
+@title
+SPEC (Specification) 관리
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+SPEC이란, Business Requirement, Use Case, SRS (Software Requirement Specification) 등
+Software 를 정의 (define, specify) 하는 모든 문서를 의미한다.
+
+Software 를 정의 (define) 한다는 것은 software 가 어떤 기능을 어떻게
+수행한다는 것을 명세하는 것이다. SPEC 이런 모든 정보를 포함해야 한다. 
+
+SPEC 의 관리란, 이러한 SPEC 간의 관계의 맵핑을 제공하는 것이다.
+위에 열거한 SPEC 들 (Business Requirement, Use Case, SRS 등) 은
+서로 밀접한 관계를 맺는다. 
+
+
+@child_spec
+- DOC.SPEC.S01_BIZ_REQ.BR_0002_TEST_MGMT
+
+
+~~~
+
+위와 같은 형식의 doxygen 스타일 텍스트 문서를 (b) 의 sates 에 입력하면, sates 는 이를 내부적으로 저장한다. (b) 의 sates 는 프로젝트의 sates_core 에 해당하며, 서버 데몬, 서비스 등과 같은 시스템이라고 간주할 수 있다. 참고로, C# 으로 작성되었다. 
+
+sates 는 (c) 에 보이는 것처럼 doxygen 스타일로 꾸며진 소스파일을 생성할 수 있다. 생성된 파일의 예는 아래와 같다.
+
+~~~
+namespace DOC.SPEC.S01_BIZ_REQ
+{
+    /** \addtogroup DOC
+    *  @{
+    */
+    /** \addtogroup SPEC
+    *  @{
+    */
+    /** \addtogroup S01_BIZ_REQ
+    *  @{
+    */
+
+    /**
+    @revision
+    |  날짜  | 내용  | 담당자   | 검수자  |
+    |------------|------------|------------|------------|
+    |  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+    
+    
+
+    @title
+    SPEC (Specification) 관리
+
+    @author
+    Seokhwan Kim
+
+    @date
+    
+
+    @desc
+
+    SPEC이란, Business Requirement, Use Case, SRS (Software Requirement Specification) 등\n
+    Software 를 정의 (define, specify) 하는 모든 문서를 의미한다.\n
+    
+
+    Software 를 정의 (define) 한다는 것은 software 가 어떤 기능을 어떻게\n
+    수행한다는 것을 명세하는 것이다. SPEC 이런 모든 정보를 포함해야 한다.\n
+    
+
+    SPEC 의 관리란, 이러한 SPEC 간의 관계의 맵핑을 제공하는 것이다.\n
+    위에 열거한 SPEC 들 (Business Requirement, Use Case, SRS 등) 은\n
+    서로 밀접한 관계를 맺는다.\n
+    
+
+    
+
+
+    @child_spec
+    - DOC.SPEC.S01_BIZ_REQ.BR_0002_TEST_MGMT
+
+    */
+    class BR_0001_SPEC_MGMT{}
+    /** @} */
+    /** @} */
+    /** @} */
+
+}
+
+~~~
+
+보이는 것과 같이, BR_0001_SPEC_MGMT 라는 이름의 클래스가 위의 텍스트 파일의 내용을 반영하여 생성되었다. 디렉토리 구조에 따라, namespace 및 addtogroup 태그의 내용도 생성되었다.
+
+이와 같은 문서를 다시 (d) 의 doxygen 시스템 (http://www.stack.nl/~dimitri/doxygen/) 에 입력하면, 우리는 다양한 형태의 문서를 생성할 수 있다. 
+
+궁극적으로 (e) 에 표기된대로 문서를 생성할 수 있으며, 위의 예제를 통해 생성한 문서는 아래 그림과 같다.
+
+![Alt text](resource/img/readme_img/example_output.png "출력예제")
+
+## 테스트 툴킷과의 통합
+위에 명기하였듯이, sates 는 SPEC 과 TEST 문서간의 통합을한다. TEST 문서는 필연적으로 TEST 결과를 포함해야 하며, 소프트웨어 테스트는 일반적으로 전용 툴을 사용한다. 여기서 전용 툴이란, 어떤 구문이 TRUE 혹은 FALSE 인지, 어떤 값이 동일한지 혹은 동일하지 않은지를 테스하는 기능과 또 구문이 false 로 판명될 경우, 이를 로깅하는 기능, 실행 중 segmentation fault 등이 발생하더라도 해당 케이스를 실패로 판명하고, 다음 케이스를 실행하는 기능 등을 포함한다. (Google Test 의 기능을 상상해보라.) 
+
+이러한 툴킷과의 통합을 위해 개발된 것이 json 형식의 command 이다. 위에 서술한 것과 같이 sates 시스템은 C# 으로 작성되었다. 따라서, C# 의 테스트 코드와는 통합이 바로 가능하다. 하지만, Java, C++ 과 같은 다른 언어와의 통합을 위해서는 이들 언어와의 바인딩 (예: C# 의 interoperability 혹은 Java 의 Jini) 을 활용해야 한다. 이런 바인딩의 경우, 성능은 더 좋을수 있으나, 시스템의 전체적인 복잡도 및 해당 기술과의 커플링이 높아져 결과적으로 재사용성 및 유지보수성에 악영향을 미치게 된다.
+
+이에 대한 대안으로 사용한 것이 바로 json 형식을 사용한 command 방식이다. 참고로 json 은 human readable / editable 한 것이 참 멋진 특성으로 보인다. 아래 그림은 json 커맨드의 예제이다. 
+
+~~~
+[
+    {
+        "api":"test_result_set",
+        "args":
+        [
+            "TU_00001_STRING_TRANSFER",
+            "FAILURE",
+            "FAIL, filename : D:\\bsd\\sates\\codes\\test_sates_core\\T01_UNIT\\TU_00001_STRING_TRANSFER.cs, method name : TESTCODE.T01_UNIT.TU_00001_STRING_TRANSFER.run(), line : 61"
+        ],
+        "reserved1":null,
+        "reserved2":null,
+        "reserved3":null
+    },
+    {
+        "api":"test_result_set",
+        "args":
+        [
+            "TU_00002_FILE_TRANSFER",
+            "OK"
+        ],
+        "reserved1":null,
+        "reserved2":null,
+        "reserved3":null
+    },
+    {
+        "api":"test_result_set",
+        "args":
+        [
+            "TU_00003_API_CMD_JSON_PARSER",
+            "OK"
+        ],
+        "reserved1":null,
+        "reserved2":null,
+        "reserved3":null
+    },
+    {
+        "api":"test_result_set",
+        "args":
+        [
+            "TU_00004_TEST_RESULT_REPORTER_JSON",
+            "OK"
+        ],
+    "reserved1":null,
+    "reserved2":null,
+    "reserved3":null
+    }
+]
+~~~ 
+
+보이는 것과 같이 api 는 함수의 이름이며, 뒤에 바로 args 가 array 형태로 뒤따라 온다. 첫번째 파라메터는 테스트 케이스의 이름, 두번째 파라메터는 성공 / 실패 여부, 그리고, optional parameter 로 실패의 경우, 로그가 따라온다. reserved1, 2, 3 이 뒤따라 온다.
+
+~~~
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 31일 | 문서작성  | 김석환  |  사용자  |
+
+@title
+TCP/IP 소켓 활용 스트링 전송
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+Local port 를 오픈 후, 샘플 스트링을 전송하여
+해당 스트링이 올바르게 전송되었는지 검사한다.
+
+
+@ret_code
+- sates.util.string_transfer
+
+@ret_spec
+
+
+~~~
+
+본래의 테스트케이스 문서인 위의 파일과 그 위의 json 메시지를 반영하면, 아래와 같은 테스트케이스 문서가 생성이된다. 
+~~~
+namespace DOC.TESTCASE.T03_UNIT
+{
+    /** \addtogroup DOC
+    *  @{
+    */
+    /** \addtogroup TESTCASE
+    *  @{
+    */
+    /** \addtogroup T03_UNIT
+    *  @{
+    */
+
+    /**
+    @revision
+    |  날짜  | 내용  | 담당자   | 검수자  |
+    |------------|------------|------------|------------|
+    |  2018년 7월 31일 | 문서작성  | 김석환  |  사용자  |
+    
+
+    @title
+    TCP/IP 소켓 활용 스트링 전송
+
+    @author
+    Seokhwan Kim
+
+    @date
+    
+
+    @desc
+
+    Local port 를 오픈 후, 샘플 스트링을 전송하여\n
+    해당 스트링이 올바르게 전송되었는지 검사한다.\n
+    
+
+    
+
+
+    @test_result
+    FAILURE
+
+    @test_fail_log
+
+    FAIL, filename : D:\bsd\sates\codes\test_sates_core\T01_UNIT\TU_00001_STRING_TRANSFER.cs, method name : TESTCODE.T01_UNIT.TU_00001_STRING_TRANSFER.run(), line : 61\n
+
+    @ret_spec
+    
+
+    @ret_code
+    - sates.util.string_transfer
+
+    */
+    class TU_00001_STRING_TRANSFER{}
+    /** @} */
+    /** @} */
+    /** @} */
+
+}
+~~~
+
+보이는 것과 같이 test의 결과 및 fail 의 경우, 이의 로그가 삽입되었다.
+
+그리고, 이를 다시 doxygen 으로 생성하면 아래와 같은 문서가 생성이된다.
+
+![Alt text](resource/img/readme_img/test_output_example.png "테스트 결과 포함 문서 예제")
+
+
+
+# How to run (작성 필요)
+## svn / github checkout
+
+## 코드 편집
+./code/test_sates_core/Program.cs 파일의 const string DEFAULT_PATH 스트링 편집
+
+# How to customize
+## Doxygen 태그 추가
+./resource/doxy/sates_doxy 파일의 55번째 줄에서 시작하는 ALIASES 을 편집한다.
+
+
+
+# 빌드환경
+## Microsoft Windows
+
+마지막 검증 일자 :  2018 년 8월 13일
+
+| 항목 | 버전 |
+|------|-----|
+| 버전 |  Windows 10  [Version 10.0.17134.167] |
+| C/C++ Compiler | Microsoft (R) C/C++ Optimizing Compiler Version 19.14.26433 for x86 |
+| C# Compiler | Microsoft (R) Visual C# Compiler version 2.8.3.63029 (e9a3a6c0) |
+
+
+### Dependencies 
+- doxygen 1.8.14 * <br>
+https://sourceforge.net/projects/doxygen/
+- graphviz 2.38 * <br>
+https://graphviz.gitlab.io/download/
+- Plantuml v1.2018.8 * <br>
+http://plantuml.com/
+- Java SE Development Kit 8u181 <br>
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+- .NET Core SDK x64 (v2.1.302) <br>
+https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.302-windows-x64-installer
+
+
+\* 가 표기된 doxygen, graphviz, plantuml 은 dependency 디렉토리에 포함되어 있음.
+
+## 주의
+### .NET Core SDK 버전 (2018년 8월 13일)
+.NET Core SDK 의 버전명은 정확히 이해하기 어렵다. <br>
+예를 들어, https://www.microsoft.com/net/download/dotnet-core/2.0 <br>
+페이지를 보면, v2.0.9 를 보면, 명확히 2.0 버전의 9번째 릴리즈와 같은 느낌을 준다. <br>
+따라서, v2.0 이 말이 된다.<br>
+그러나, 그 옆의 SDK 버전을 보면 버전명이 2.1.202 이다. <br>
+갑자기 버전명이 2.1 이기 때문에 v2.1 로 오해하기 쉽다. <br>
+이 버전명의 명명규칙은 이해할 수 없고, 이해하고 싶지도 않다. <br>
+
+어쨌든, 명확히 2.1.302 버전을 사용하도록 한다.<br>
+참고로, 2.1.202 SDK 를 설치하면 빌드가 되지 않는다. <br>
+(현 프로젝트의 target 이 2.1 인데, SDK 는 2.0 이기 때문)
+
+### msbuild 가 아닌 dotent build 사용
+ C# 을 빌드하기 위해서는 아래와 같은 커맨드 라인을 사용한다: <br>
+$ dotnet build your_cs_proj.csproj <br>
+https://github.com/fsprojects/Paket/issues/2697
+
+아래와 같은 커맨드는 동작하지 않는다. <br>
+$ msbuild *.csproj <br>
+or <br>
+$ dotnet msbuild *.csproj <br>
+
+### Visual Studio 설치권장
+현재 C#, C++ 을 빌드하기 위해서는 사실은 C#과 C++ 의 컴파일러, 그리고 관련된 library 가 필요하다.
+C#의 경우에는 .NET Core SDK 에, C++ 의 경우에는 Windows SDK 에 컴파일러와 헤더 등이 포함되어 있을 것을 <strong> 예상된다. </strong>
+
+이러한 부분을 모두 하나 하나 정확히 파악하는 것은 사실 개발환경 설정 측면에서 무척 중요하다.
+
+하지만, 나는 위의 부분에 대해 현시점에 명확히 파악하고 싶은 의사가 없다. 따라서, 가단히 사용 가능한 Visual Studio 2017 버전의 설치를 강력히 권장한다. 이하는 각 버전 별 참고사항이다.
+
+#### Visual Studio Professional 2017 이상 설치 권장
+codes/sates.sln 파일은 Visual Studio 2017 Professional 이상의 버전에서 사용이 가능하다.
+
+#### Visual Studio Express 2017 (상용 개발자 with no 라이센스)
+상용 개발의 경우에는 Visual Studio Community Edition 도 사용이 불가하다. 마지막 남은 옵션은 Visual Studio 2017 Express 버전을 설치하는 것이다. 다행시 express 버전도 SATES 에서 사용하는 헤더 및 라이브러리는 모두 설치되기 때문에 빌드에 문제가 없다. 
+
+참고로, deploy 용 바이너리 역시 express 버전을 설치한 가상머신에서 빌드하고 있다.
+
+참고로, Visual Studio Express 에서는 codes/sates.sln 파일의 오픈은 불가하다.
+
+## Ubuntu 18.04
+마지막 검증일자 : 2018년 7월 21일 <br>
+18.04 Desktop 버전의 Minimal 로 설치 후, 아래의 dependency 를 설치하고 빌드.
+
+### Dependencies 
+- .NET Core SDK <br>
+( see also : https://www.microsoft.com/net/download/linux-package-manager/ubuntu18-04/sdk-current, last accessed July 16, 2018) <br>
+아래 커맨드를 차례대로 사용하여 설치. <br> 
+$ wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb <br>
+$ sudo dpkg -i packages-microsoft-prod.deb <br>
+$ sudo apt-get install apt-transport-https <br>
+$ sudo apt-get update <br>
+$ sudo apt-get install dotnet-sdk-2.1 <br>
+- graphviz <br>
+  $sudo apt-get install graphviz
+- doxygen <br>
+  $sudo apt-get install doxygen
+- jdk
+  $sudo apt-get install default-jdk
+
+이하는 향 후, C/C++ 테스트 시 필요한 dependencies
+- gcc <br>
+  $ sudo apt-get install gcc
+- g++ <br>
+  $ sudo apt-get install g++
+- cmake <br>
+  $ sudo apt-get install cmake
+
+# C#
+## Coverage 데이터 추출
+### 설치 필요 파일
+- coverlet (C# Code Coverage) <br>
+https://github.com/tonerdo/coverlet <br>
+Developer Command Prompot for VS 2017 실행 <br>
+아래 행 입력하여 설치
+$ dotnet tool install --global coverlet.console 
+- ReportGenerator <br>
+https://github.com/danielpalme/ReportGenerator
+
+### Coverage 데이터 추출 커맨드라인
+#### coverlet
+예를 들어, C:\sates 에 설치된 경우 : <br>
+coverlet C:\sates\build\Debug\netcoreapp2.1\test_sates_core.dll --target "dotnet" --targetargs "test C:\sates\codes\test_sates_core\test_sates_core.csproj --no-build"  --format cobertura
+
+#### Report Generator
+reportgenerator -reports:coverage.cobertura.xml -targetdir:report
+
+
+
+## SATES 개발 배경 
 ### 가벼운 문서 맵핑 툴
 SATES 를 개발하게된 첫번재 동기는 가벼우면서 또한 문서간의 맵핑이 생성되는 툴킷을 내가 사용하고 싶었기 때문이다. 입사 후, 회사에서 본격적으로 소프트웨어 개발을 시작하게 되었다. 학창시절부터 프로그래밍을 좋아하였고, 또, 신뢰성있는 소스코드를 작성하는 것에 흥미를 느꼈기 때문에 수많은 문서화에 대해 거부감은 없었다. 다만, 내게 맞는 문서화 툴이 없음을 느끼게 되었다.
 
@@ -192,99 +590,3 @@ Business Requirements, SRS, SW Design 은 공통적으로 소프트웨어가 어
 
 예를 들어, 실물과 함께 동작하는 소프트웨어라면 (자동차, 로봇 등) 실물과 함께 테스트하는 것이 가능할 것이고, 통합테스트를 순차적으로 수백 - 수천번 반복하여 문제가 없는지 테스트를 해보거나 혹은 웹서버의 경우라면 과거의 사용패턴을 그대로 답습하여 그대로 동작을 시켜보는 것. 즉 실제 운용환경과 가장 비슷한 환경에서 실제 서비스에 준하는 테스트가 가능할 것이다. 이는 각 회사 및 조직에서 적절히 선정해야할 것이다.
 
-
-
-# How to run
-## svn / github checkout
-
-## 코드 편집
-./code/test_sates_core/Program.cs 파일의 const string DEFAULT_PATH 스트링 편집
-
-# How to customize
-## Doxygen 태그 추가
-./resource/doxy/sates_doxy 파일의 55번째 줄에서 시작하는 ALIASES 을 편집한다.
-
-
-
-# 빌드환경
-## Microsoft Windows
-
-마지막 검증 일자 :  2018 년 7월 26일
-
-| 항목 | 버전 |
-|------|-----|
-| 버전 |  Windows 10  [Version 10.0.17134.167] |
-| IDE | Microsoft Visual Studio Express 2017 for Windows Desktop 15.7.5 |
-| C/C++ Compiler | Microsoft (R) C/C++ Optimizing Compiler Version 19.14.26433 for x86 |
-| C# Compiler | Microsoft (R) Visual C# Compiler version 2.8.3.63029 (e9a3a6c0) |
-
-
-### Dependencies 
-- doxygen 1.8.14 <br>
-https://sourceforge.net/projects/doxygen/
-- graphviz 2.38 <br>
-https://graphviz.gitlab.io/download/
-- Plantuml v1.2018.8 <br>
-http://plantuml.com/
-- jdk 8u172 <br>
-http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-- .NET Core SDK x64 (v2.1.302) <br>
-https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.302-windows-x64-installer
-
-## 주의
-### .NET Core SDK 버전 (2018년 7월 26일)
-.NET Core SDK 의 버전명은 정확히 이해하기 어렵다. <br>
-예를 들어, https://www.microsoft.com/net/download/dotnet-core/2.0 <br>
-페이지를 보면, v2.0.9 를 보면, 명확히 2.0 버전의 9번째 릴리즈와 같은 느낌을 준다. <br>
-따라서, v2.0 이 말이 된다.<br>
-그러나, 그 옆의 SDK 버전을 보면 버전명이 2.1.202 이다. <br>
-갑자기 버전명이 2.1 이기 때문에 v2.1 로 오해하기 쉽다. <br>
-이 버전명의 명명규칙은 이해할 수 없고, 이해하고 싶지도 않다. <br>
-
-어쨌든, 명확히 2.1.302 버전을 사용하도록 한다.<br>
-참고로, 2.1.202 SDK 를 설치하면 빌드가 되지 않는다. <br>
-(현 프로젝트의 target 이 2.1 인데, SDK 는 2.0 이기 때문)
-
-### msbuild 가 아닌 dotent build 사용
- C# 을 빌드하기 위해서는 아래와 같은 커맨드 라인을 사용한다: <br>
-$ dotnet build your_cs_proj.csproj <br>
-https://github.com/fsprojects/Paket/issues/2697
-
-아래와 같은 커맨드는 동작하지 않는다. <br>
-$ msbuild *.csproj <br>
-or <br>
-$ dotnet msbuild *.csproj <br>
-
-
-### Visual Studio Express 제약사항
-Visual Studio Express 는 첨부된 solution 을 제대로 열지 못한다. <br>
-상업용으로 빌드하여 사용한다면 Visual Studio Express 을 설치하고 <br>
-커맨드라인툴을 사용해야 한다. <br>
-
-## Ubuntu 18.04
-마지막 검증일자 : 2018년 7월 21일 <br>
-18.04 Desktop 버전의 Minimal 로 설치 후, 아래의 dependency 를 설치하고 빌드.
-
-### Dependencies 
-- .NET Core SDK <br>
-( see also : https://www.microsoft.com/net/download/linux-package-manager/ubuntu18-04/sdk-current, last accessed July 16, 2018) <br>
-아래 커맨드를 차례대로 사용하여 설치. <br> 
-$ wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb <br>
-$ sudo dpkg -i packages-microsoft-prod.deb <br>
-$ sudo apt-get install apt-transport-https <br>
-$ sudo apt-get update <br>
-$ sudo apt-get install dotnet-sdk-2.1 <br>
-- graphviz <br>
-  $sudo apt-get install graphviz
-- doxygen <br>
-  $sudo apt-get install doxygen
-- jdk
-  $sudo apt-get install default-jdk
-
-이하는 향 후, C/C++ 테스트 시 필요한 dependencies
-- gcc <br>
-  $ sudo apt-get install gcc
-- g++ <br>
-  $ sudo apt-get install g++
-- cmake <br>
-  $ sudo apt-get install cmake

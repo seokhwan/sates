@@ -90,6 +90,7 @@ namespace sates.test.cs
 
                 sates.test.cs.test_result_reporter_josn.add_result(item);
                 string report_str = sates.test.cs.test_result_reporter_josn.get_report_string();
+                System.Console.Write(report_str);
                 reporter.report(report_str);
             }
         }

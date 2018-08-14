@@ -47,9 +47,7 @@ namespace sates.output.doxy
             wr.WriteLine("doxygen sates_doxy");
             wr.Close();
 
-            string doxy_filename_chm = out_dir + "/sates_doxy_chm";
-            string doxy_filename_html = out_dir + "/sates_doxy_html";
-            doxyrun_gen_common.doxyfilegen(deps_common_path, doxy_resource_path, doxy_filename_chm, doxy_filename_html, out_dir);
+            doxyrun_gen_common.doxyfilegen(deps_common_path, doxy_resource_path, out_dir, "html");
         }
     }
     /** @} */

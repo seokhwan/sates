@@ -30,6 +30,7 @@ namespace sates.output.doxy
     |------------|------------|------------|------------|
     |2018년 8월 1일 | Cross Platform 에 공통되는 부분  | 김석환  |  사용
     |2018년 8월 1일 | chm, html 분리. 코드 품질 下, 향 후 refactoring 필수  | 김석환  |  사용
+    |2018년 8월 13일 | Refactroing, 중복코드 삭제 | 김석환  |  사용자  |
      */
 
     /// <summary>
@@ -37,42 +38,33 @@ namespace sates.output.doxy
     /// </summary>
     public abstract class doxyrun_gen_common
     {
-        public static void doxyfilegen(string depts_common_path, string doxy_resource_path, string doxy_fillename_chm, string doxy_fillename_html, string out_dir)
+        public static void doxyfilegen(string depts_common_path, string doxy_resource_path, string out_dir, string ext)
         {
             doxy_resource_path = System.IO.Path.GetFullPath(doxy_resource_path);
-            string doxyfile = doxy_resource_path + "/sates_doxy_chm";
-            var lines = System.IO.File.ReadAllLines(doxyfile);
-            
-            System.IO.StreamWriter wr = new System.IO.StreamWriter(doxy_fillename_chm);
+            string doxy_out_file = out_dir + sates.core.os_setting.DIR_SEPARATOR + "sates_doxy_" + ext;
+            string doxy_res_file = doxy_resource_path + sates.core.os_setting.DIR_SEPARATOR + "sates_doxy_" + ext;
 
-            wr.WriteLine("SET PLANTUML_JAR_PATH=" + depts_common_path 
-                + sates.core.os_setting.DIR_SEPARATOR + "plantuml-1.2018.8"
-                + sates.core.os_setting.DIR_SEPARATOR + "plantuml.jar");
+            System.IO.StreamWriter wr = new System.IO.StreamWriter(doxy_out_file);
 
-            foreach (var line in lines)
-            {
-                wr.WriteLine(line);
-            }
-            wr.Close();
-
-
-            doxyfile = doxy_resource_path + "/sates_doxy_html";
-            lines = System.IO.File.ReadAllLines(doxyfile);
-            wr = new System.IO.StreamWriter(doxy_fillename_html);
+            depts_common_path = System.IO.Path.GetFullPath(depts_common_path);
 
             wr.WriteLine("SET PLANTUML_JAR_PATH=" + depts_common_path
                 + sates.core.os_setting.DIR_SEPARATOR + "plantuml-1.2018.8"
                 + sates.core.os_setting.DIR_SEPARATOR + "plantuml.jar");
 
+            
+
+            var lines = System.IO.File.ReadAllLines(doxy_res_file);
             foreach (var line in lines)
             {
                 wr.WriteLine(line);
             }
+
             wr.Close();
 
             System.IO.File.Copy(
-                doxy_resource_path + "/sates_style.css",
-                out_dir + "/sates_style.css",
+                doxy_resource_path + sates.core.os_setting.DIR_SEPARATOR + "sates_style.css",
+                out_dir + sates.core.os_setting.DIR_SEPARATOR + "sates_style.css",
                 true);
         }
     }

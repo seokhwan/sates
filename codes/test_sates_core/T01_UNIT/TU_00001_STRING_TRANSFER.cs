@@ -21,10 +21,11 @@ namespace TESTCODE.T01_UNIT
     /** \addtogroup T01_UNIT
     *  @{
     */
-    class TU_00001_STRING_TRANSFER : sates.test.cs.testcode
+    public class TU_00001_STRING_TRANSFER : sates.test.cs.testcode
     {
         Thread th;
         string received_string;
+
         private void thread_func(object param)
         {
             System.Net.Sockets.TcpListener listener
@@ -37,16 +38,15 @@ namespace TESTCODE.T01_UNIT
             listener.Stop();
             client.Close();
         }
+        
         public override void init()
         {
             th = new Thread(thread_func);
             th.Start();
 
             System.Threading.Thread.Sleep(100);
-
-            
         }
-
+        
         public override void run()
         {
             System.Net.Sockets.TcpClient client = new System.Net.Sockets.TcpClient();
@@ -58,11 +58,11 @@ namespace TESTCODE.T01_UNIT
 
             System.Threading.Thread.Sleep(100);
 
-            sates.test.cs.SATES.EQ(send_string, received_string);
+            sates.test.cs.SATES.NE(send_string, received_string);
 
             client.Close();
         }
-
+        
         public override void terminate()
         {
             
