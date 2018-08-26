@@ -307,7 +307,7 @@ namespace DOC.TESTCASE.T03_UNIT
 # How to build & run (Java)
 ## Windows
 ### Build
-- ./sates/scripts/win 으로 이동하여 100_build.bat 을 실행한다. <br>
+- ./sates/scripts/win 으로 이동하여 100_build.bat 을 실행한다. (prebuild binary 사용시 skip 가능) <br>
 $ 100_build.bat
 
 - 기본 build 디렉토리로 이동 <br>
@@ -316,7 +316,7 @@ $ cd ..\..\build\Debug\netcoreapp2.1\
 - sates_core.dll 실행 <br>
 $ dotnet sates_core.dll
 
-- 다시 ./sates/scripts/win 으로 이동하여 또다른 command prompt 열고 아래라인을 순서대로 실행 <br>
+- 다시 ./sates/scripts/win 으로 이동하여 또다른 command prompt 열고 아래라인을 순서대로 실행 (prebuild binary 사용시 skip 가능) <br>
 $ 300_sates_java_build.bat <br>
 $ 301_java_code_build.bat <br>
 $ 302_java_test_build.bat <br>
@@ -325,7 +325,7 @@ $ 302_java_test_build.bat <br>
 $ 303_java_test_run.bat
 
 ## Ubuntu
-- ./sates/scripts/ubuntu 으로 이동하여 100_build.sh 을 실행한다. <br>
+- ./sates/scripts/ubuntu 으로 이동하여 100_build.sh 을 실행한다. (prebuild binary 사용시 skip 가능) <br>
 $ ./100_build.sh
 
 - 기본 build 디렉토리로 이동 <br>
@@ -334,7 +334,7 @@ $ cd ../../build/Debug/netcoreapp2.1
 - sates_core.dll 실행 <br>
 $ dotnet sates_core.dll
 
-- 다시 ./sates/scripts/ubuntu 으로 이동하여 또다른 command prompt 열고 아래라인을 순서대로 실행 <br>
+- 다시 ./sates/scripts/ubuntu 으로 이동하여 또다른 command prompt 열고 아래라인을 순서대로 실행 (prebuild binary 사용시 skip 가능) <br>
 $ ./300_sates_java_build.sh <br>
 $ ./301_java_code_build.sh <br>
 $ ./302_java_test_build.sh <br>
