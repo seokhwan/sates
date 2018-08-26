@@ -1,0 +1,26 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 8월 15일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+다른 타입간의 연산 불가
+
+@author
+Seokhwan Kim
+
+@date
+
+@priority
+5
+
+
+@desc
+다른 타입간의 연산을 허용하지 않는다. 예를 들어, float 과 int 간의 사칙연산을 모두 불허한다.
+
+@parent_spec
+- BR_0002_RELIABILITY
+
+@child_spec
+
+@test

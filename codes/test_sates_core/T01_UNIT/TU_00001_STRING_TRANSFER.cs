@@ -29,7 +29,7 @@ namespace TESTCODE.T01_UNIT
         private void thread_func(object param)
         {
             System.Net.Sockets.TcpListener listener
-                = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Parse("127.0.0.1"), 5000);
+                = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Parse("127.0.0.1"), 6000);
             listener.Start();
             var client = listener.AcceptTcpClient();
 
@@ -50,7 +50,7 @@ namespace TESTCODE.T01_UNIT
         public override void run()
         {
             System.Net.Sockets.TcpClient client = new System.Net.Sockets.TcpClient();
-            client.Connect("127.0.0.1", 5000);
+            client.Connect("127.0.0.1", 6000);
 
             string send_string = "test string 테스트 스트링  日本語、テストのストリングです。ひらがな ”";
 
@@ -58,7 +58,7 @@ namespace TESTCODE.T01_UNIT
 
             System.Threading.Thread.Sleep(100);
 
-            sates.test.cs.SATES.NE(send_string, received_string);
+            sates.test.cs.SATES.EQ(send_string, received_string);
 
             client.Close();
         }

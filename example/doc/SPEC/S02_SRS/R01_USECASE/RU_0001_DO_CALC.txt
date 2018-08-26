@@ -1,0 +1,28 @@
+﻿@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 8월 15일 | 최초 작성  | 김석환  |  사용자  |
+
+@title
+계산 실행
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+사용자는 계산을 실행하고, 결과 값을 얻을 수 있다.
+
+@uml
+User -> (input parameter values)
+User -> (do calculation)
+User -> (get the result)
+
+@parent_spec
+
+@child_spec
+
+@test
+
+

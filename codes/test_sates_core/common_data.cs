@@ -31,6 +31,6 @@ namespace TESTCODE
     /// </summary>
     class common_data
     {
-        public static string DEFAULT_PATH = System.Reflection.Assembly.GetExecutingAssembly().Location + "../../../../../";
+        public static string DEFAULT_PATH = System.IO.Path.GetFullPath(System.Reflection.Assembly.GetExecutingAssembly().Location + "../../../../../");
     }
 }

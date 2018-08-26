@@ -31,10 +31,12 @@ namespace sates.input
     /// <summary>
     /// 외부로부터 통신을 통해 api_cmd 자체를 수신하는 서버의 대표 interface
     /// </summary>
-    abstract class api_cmd_server
+    public abstract class api_cmd_server
     {
         public abstract void open(string addr1, string addr2 = null);
         public abstract void run();
+
+        public abstract bool is_running();
         public abstract void close();
     }
 }

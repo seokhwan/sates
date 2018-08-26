@@ -18,12 +18,22 @@ rmdir sates_test_cpp\Debug /s /q
 rmdir sates_test_cpp\Release /s /q
 
 cd ..\
-rmdir _dirty\plantuml\output /s /q
+rmdir _PRIVATE\plantuml\output /s /q
 
 rmdir scripts\win\output /s /q
 
-rmdir build /s /q
+rmdir build\Debug /s /q
+rmdir build\Release /s /q
+rmdir build\Java /s /q
 rmdir outfiles /s /q
+
+rmdir example\java_test\out /s /q
+rmdir example\java_code\out /s /q
+rmdir example\javaout /s /q
+
+
+
+rmdir codes\sates_test_java\out /s /q
 
 
 cd %CURDIR%

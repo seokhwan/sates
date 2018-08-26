@@ -38,7 +38,26 @@ namespace sates.core
     /// </summary>
     public class os_setting
     {
-        public static OS_NAME OS = OS_NAME.INVALID;
+        private static OS_NAME _os = OS_NAME.INVALID;
+        public static OS_NAME OS
+        {
+            get
+            {
+                if (OS_NAME.INVALID == _os)
+                {
+                    String curpath = System.IO.Path.GetFullPath(System.Reflection.Assembly.GetEntryAssembly().Location);
+                    if (curpath.Contains("\\"))
+                    {
+                        _os = OS_NAME.WINDOWS;
+                    }
+                    else
+                    {
+                        _os = OS_NAME.UBUNTU;
+                    }
+                }
+                return _os;
+            }
+        }
         
         public static char DIR_SEPARATOR
         {

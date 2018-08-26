@@ -40,7 +40,7 @@ namespace sates.input.api
         {
             sates.core.doc_factory.create(uniq_id, doc_type, category_info);
         }
-        public static void set(api_cmd cmd_data)
+        public static string call(api_cmd cmd_data)
         {
             Queue<string> category_info = null;
             if (cmd_data.args.Length > 2)
@@ -52,6 +52,7 @@ namespace sates.input.api
                 }
             }
             set(cmd_data.args[0], cmd_data.args[1], category_info);
+            return "OK";
         }
     }
     /** @} */

@@ -1,0 +1,26 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 8월 15일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+뺄셈 실행
+
+@author
+Seokhwan Kim
+
+@date
+
+@priority
+5
+
+
+@desc
+뺄셈을 실행한다.
+
+@parent_spec
+- RU_0001_DO_CALC
+
+@child_spec
+
+@test

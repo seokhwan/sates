@@ -11,6 +11,7 @@
 |  2018년 8월 11일 | SPEC 및 테스트에 대한 설명 추가 | 김석환  |  사용자  |
 |  2018년 8월 13일 | Visual Studio 관련 개발환경 내용 추가 | 김석환  |  사용자  |
 |  2018년 8월 14일 | SATES 시스템 flow 및 예제 추가 | 김석환  |  사용자  |
+|  2018년 8월 26일 | Java 튜토리얼 추가 | 김석환  |  사용자  |
  
 
 # SATES 결과물
@@ -303,7 +304,100 @@ namespace DOC.TESTCASE.T03_UNIT
 
 
 
-# How to run (작성 필요)
+# How to build & run (Java)
+## Windows
+### Build
+- ./sates/scripts/win 으로 이동하여 100_build.bat 을 실행한다. <br>
+$ 100_build.bat
+
+- 기본 build 디렉토리로 이동 <br>
+$ cd ..\..\build\Debug\netcoreapp2.1\
+
+- sates_core.dll 실행 <br>
+$ dotnet sates_core.dll
+
+- 다시 ./sates/scripts/win 으로 이동하여 또다른 command prompt 열고 아래라인을 순서대로 실행 <br>
+$ 300_sates_java_build.bat <br>
+$ 301_java_code_build.bat <br>
+$ 302_java_test_build.bat <br>
+
+- java 프로그램 실행 <br>
+$ 303_java_test_run.bat
+
+## Ubuntu
+- ./sates/scripts/ubuntu 으로 이동하여 100_build.sh 을 실행한다. <br>
+$ ./100_build.sh
+
+- 기본 build 디렉토리로 이동 <br>
+$ cd ../../build/Debug/netcoreapp2.1
+
+- sates_core.dll 실행 <br>
+$ dotnet sates_core.dll
+
+- 다시 ./sates/scripts/ubuntu 으로 이동하여 또다른 command prompt 열고 아래라인을 순서대로 실행 <br>
+$ ./300_sates_java_build.sh <br>
+$ ./301_java_code_build.sh <br>
+$ ./302_java_test_build.sh <br>
+
+- java 프로그램 실행 <br>
+$ ./303_java_test_run.sh
+
+## Java 결과확인
+Windows 와 Ubuntu 모두, <br>
+./sates/example/javaout/ 이하의 디렉토리에 DOC 및 파일들이 생성된 것을 확인할 수 있다. 특히, /sates/example/javaout/DOC/TESTCASE/T03_UNIT$/TU_00003_MULTIPLICATION.cs 파일을 보면 아래와 같이 test 가 실패한 경우, 이에 대한 로그가 남는 것을 확인할 수 있다. (@test_result, @test_fail_log 부분).
+~~~
+namespace DOC.TESTCASE.T03_UNIT
+{
+    /** \addtogroup DOC
+    *  @{
+    */
+    /** \addtogroup TESTCASE
+    *  @{
+    */
+    /** \addtogroup T03_UNIT
+    *  @{
+    */
+
+    /**
+    @revision
+    |  날짜  | 내용  | 담당자   | 검수자  |
+    |------------|------------|------------|------------|
+    |  2018년 8월 15일 | 최초작성  | 김석환  |  사용자  |
+
+
+    @title
+    덧셈기능 검증
+
+    @author
+    Seokhwan Kim
+
+    @date
+
+
+    @desc
+
+
+    @test_result
+    FAILURE
+
+    @test_fail_log
+
+    FAIL, filename : TU_00003_MULTIPLICATION.java, method name : run, line : 29\n
+
+    @ret_spec
+
+
+    @ret_code
+
+
+    */
+    class TU_00003_MULTIPLICATION{}
+    /** @} */
+    /** @} */
+    /** @} */
+
+}
+~~~
 ## svn / github checkout
 
 ## 코드 편집

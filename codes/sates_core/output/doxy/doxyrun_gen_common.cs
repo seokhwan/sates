@@ -52,8 +52,6 @@ namespace sates.output.doxy
                 + sates.core.os_setting.DIR_SEPARATOR + "plantuml-1.2018.8"
                 + sates.core.os_setting.DIR_SEPARATOR + "plantuml.jar");
 
-            
-
             var lines = System.IO.File.ReadAllLines(doxy_res_file);
             foreach (var line in lines)
             {

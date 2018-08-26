@@ -38,6 +38,7 @@ namespace sates.output.cs
             var lines = File.ReadAllLines(filename);
 
             string newfilename = output_dir + "/" + fname;
+
             StreamWriter wr = new StreamWriter(newfilename);
 
             foreach (var line in lines)
@@ -85,6 +86,7 @@ namespace sates.output.cs
                 wr.WriteLine(writeline);
             }
             wr.Close();
+            wr.Dispose();
         }
         public static void add_extension(string ext)
         {

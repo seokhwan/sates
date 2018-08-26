@@ -41,7 +41,7 @@ namespace sates.input.api
             sates.core.doc_list.get(test_case_name).set_info("test_result", result);
             sates.core.doc_list.get(test_case_name).set_info("test_fail_log", errlog);
         }
-        public static void set(api_cmd cmd_data)
+        public static string call(api_cmd cmd_data)
         {
             string[] errlog = null;
             if (cmd_data.args.Length > 2)
@@ -53,6 +53,8 @@ namespace sates.input.api
                 }
             }
             set(cmd_data.args[0], cmd_data.args[1], errlog);
+
+            return "OK";
         }
     }
     /** @} */

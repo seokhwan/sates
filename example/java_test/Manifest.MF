@@ -1,0 +1,2 @@
+Class-Path: java_code.jar sates_test_java.jar
+Main-Class: TEST.program

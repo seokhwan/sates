@@ -1,0 +1,22 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 8월 157일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@uml
+class calculator
+class adder
+class subtractor
+class multiplicator
+class divider
+
+adder -|> calculator
+subtractor -|> calculator
+multiplicator -|> calculator
+divider -|> calculator
+
+@desc
+시스템은 calculator 를 base 클래스로 하고,
+모든 계산기는 이를 상속한다.
+이는 calculator 의 인터페이스를 공유하고, 
+향 후 다른 계산 기능의 추가를 용이하게 하기 위함이다.

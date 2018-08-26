@@ -89,10 +89,9 @@ namespace sates.test.cs
                 Console.WriteLine("");
 
                 sates.test.cs.test_result_reporter_josn.add_result(item);
-                string report_str = sates.test.cs.test_result_reporter_josn.get_report_string();
-                System.Console.Write(report_str);
-                reporter.report(report_str);
             }
+            string report_str = sates.test.cs.test_result_reporter_josn.get_report_string();
+            reporter.report(report_str);
         }
     }
     /** @} */

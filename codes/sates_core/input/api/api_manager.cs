@@ -37,7 +37,7 @@ namespace sates.input.api
     /// </summary>
     public class api_manager
     {
-        private delegate void set_func_t(api_cmd cmd_data);
+        private delegate string call_func_t(api_cmd cmd_data);
         private static Hashtable table = new Hashtable();
         private static bool is_created = false;
         public static void create()
@@ -45,19 +45,29 @@ namespace sates.input.api
             if (!is_created)
             {
                 is_created = true;
-                table.Add("test_result_set", new set_func_t(test_result_set.set));
-                table.Add("doc_add", new set_func_t(doc_add.set));
+                table.Add("test_result_set", new call_func_t(test_result_set.call));
+                table.Add("doc_add", new call_func_t(doc_add.call));
+                table.Add("read_dir", new call_func_t(read_dir.call));
+                table.Add("generate_doc", new call_func_t(generate_doc.call));
+                table.Add("generate_doxygen", new call_func_t(generate_doxygen.call));
+                table.Add("source_copy_csharp", new call_func_t(source_copy_csharp.call));   
             }
         }
 
-        public static void run(string api_name, api_cmd cmd_data)
+        public static string call(api_cmd cmd_data)
         {
+            string result = "";
             create();
-            if (table.ContainsKey(api_name))
+            if (table.ContainsKey(cmd_data.api))
             {
-                set_func_t func = (set_func_t)table[api_name];
-                func(cmd_data);
+                call_func_t func = (call_func_t)table[cmd_data.api];
+                result = func(cmd_data);
             }
+            else
+            {
+                result = "there is no function : [" + cmd_data.api + "]";
+            }
+            return result;
         }
     }
     /** @} */

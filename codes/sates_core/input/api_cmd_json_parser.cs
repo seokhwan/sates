@@ -43,17 +43,21 @@ namespace sates.input
             return (List<api_cmd>)deserializer.ReadObject(ms);
         }
 
-        public override List<api_cmd> parse(string filepath)
+        public override List<api_cmd> parse(string str)
         {
-            string filelines = System.IO.File.ReadAllText(filepath);
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(Encoding.UTF8.GetBytes(filelines));
-            var retval = this.parse(ms);
-            ms.Close();
+            List<api_cmd> retval = null;
+            if (System.IO.File.Exists(str))
+            {
+                string filelines = System.IO.File.ReadAllText(str);
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(Encoding.UTF8.GetBytes(filelines));
+                retval = this.parse(ms);
+                ms.Close();
+            }
+            else
+            {
+                retval = parse(new System.IO.MemoryStream(Encoding.UTF8.GetBytes(str)));
+            }
             return retval;
-        }
-        public override List<api_cmd> parse(string str, Encoding enc)
-        {
-            return parse(new System.IO.MemoryStream(enc.GetBytes(str)));
         }
     }
     /** @} */

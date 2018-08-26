@@ -33,8 +33,7 @@ namespace sates.input
     /// </summary>
     public abstract class api_cmd_parser
     {
-        public abstract List<api_cmd> parse(string filepath);
-        public abstract List<api_cmd> parse(string str, Encoding enc);
+        public abstract List<api_cmd> parse(string str);
         public abstract List<api_cmd> parse(System.IO.MemoryStream ms);
     }
 }

@@ -1,0 +1,22 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 8월 26일 | 테스트 초안 작성  | 김석환  |  사용자  |
+
+@title
+sates.core.os_setting  검사
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+os_setting 테스트
+
+
+@ret_code
+- sates.core.os_setting 
+
+@ret_spec
+

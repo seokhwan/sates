@@ -9,10 +9,10 @@ namespace sates.test.cs.report
         private sates.input.api_cmd_json_parser parer = new input.api_cmd_json_parser();
         public override void report(string report_msg)
         {
-            var cmdlist = parer.parse(report_msg, System.Text.Encoding.UTF8);
+            var cmdlist = parer.parse(report_msg);
             foreach (var cmd in cmdlist)
             {
-                sates.input.api.api_manager.run(cmd.api, cmd);
+                string result = sates.input.api.api_manager.call(cmd);
             }
         }
     }

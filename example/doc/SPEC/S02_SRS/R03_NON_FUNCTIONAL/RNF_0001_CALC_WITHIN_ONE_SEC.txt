@@ -1,0 +1,26 @@
+﻿@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 8월 15일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+연산 1초내 완료
+
+@author
+Seokhwan Kim
+
+@date
+
+@priority
+5
+
+
+@desc
+모든 연산은 1초내 완료한다.
+
+@parent_spec
+- BR_0001_CUSTOMER SATISFACTION
+
+@child_spec
+
+@test
