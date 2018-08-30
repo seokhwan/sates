@@ -342,6 +342,32 @@ $ ./302_java_test_build.sh <br>
 - java 프로그램 실행 <br>
 $ ./303_java_test_run.sh
 
+## Centos
+- sates 프로젝트 홈으로 이동 후 100_build.sh를 실행한다. (prebuild binary 사용시 skip 가능) <br>
+```bash
+$ ./scripts/centos/100_build.sh
+$ # .NET sdk, JDK1.8 설치가 안 되어있다면 prebuild 옵션을 준다.
+$ ./scripts/centos/100_build.sh prebuild
+```
+
+- 기본 build 디렉토리로 이동 후 sates_core.dll 실행
+```bash
+$ cd ../../build/Debug/netcoreapp2.1
+$ dotnet build/Debug/netcoreapp2.1/sates_core.dll
+```
+
+- 또 다른 command prompt 열고 아래 라인을 순서대로 실행 (prebuild binary 사용시 skip 가능)
+```bash
+$ ./scrips/centos/300_sates_java_build.sh
+$ ./scrips/centos/301_java_code_build.sh
+$ ./scrips/centos/302_java_test_build.sh
+```
+
+- java 프로그램 실행
+```bash
+$ ./scrips/centos/303_java_test_run.sh
+```
+
 ## Java 결과확인
 Windows 와 Ubuntu 모두, <br>
 ./sates/example/javaout/ 이하의 디렉토리에 DOC 및 파일들이 생성된 것을 확인할 수 있다. 특히, /sates/example/javaout/DOC/TESTCASE/T03_UNIT$/TU_00003_MULTIPLICATION.cs 파일을 보면 아래와 같이 test 가 실패한 경우, 이에 대한 로그가 남는 것을 확인할 수 있다. (@test_result, @test_fail_log 부분).
