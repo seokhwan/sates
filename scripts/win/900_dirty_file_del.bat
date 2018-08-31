@@ -22,8 +22,8 @@ rmdir _PRIVATE\plantuml\output /s /q
 
 rmdir scripts\win\output /s /q
 
-rmdir build\Debug /s /q
-rmdir build\Release /s /q
+REM rmdir build\Debug /s /q
+REM rmdir build\Release /s /q
 rmdir build\Java /s /q
 rmdir outfiles /s /q
 

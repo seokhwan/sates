@@ -123,7 +123,14 @@ namespace sates.input
                 }
                 catch (Exception excep)
                 {
-                    System.Console.WriteLine(excep.ToString());
+                    if(excep.ToString().Contains("An existing connection was forcibly closed by the remote host"))
+                    {
+                        System.Console.WriteLine("api_cmd_server_json_tcpip, remote host closed");
+                    }
+                    else
+                    {
+                        System.Console.WriteLine(excep.ToString());
+                    }
                     b_is_running = false;
                 }
             }
