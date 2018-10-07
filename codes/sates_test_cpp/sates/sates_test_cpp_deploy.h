@@ -81,6 +81,8 @@ extern "C" {
 #define SATES_FLOAT64_NE(val1, val2) \
     _sates_test_help_eval_impl_ne_float64((val1), (val2), __LINE__, __FILE__)
 
+	void _sates_no_framework_start(const char* p_testcase_name);
+	void _staes_no_framework_terminate(const char* p_testcase_name);
 
 #ifndef SATES_TEST_INIT
 #define SATES_TEST_INIT(TEST_CASE_NAME) void sates_test_init##TEST_CASE_NAME()
@@ -95,9 +97,15 @@ extern "C" {
 #endif
 
 #define SATES_TEST_RUN_MAIN_FUNC_RUN(TEST_CASE_NAME) \
+	extern void sates_test_init##TEST_CASE_NAME(); \
+	extern void sates_test_run##TEST_CASE_NAME(); \
+	extern void sates_test_terminate##TEST_CASE_NAME(); \
+	_sates_no_framework_start(#TEST_CASE_NAME);\
 	sates_test_init##TEST_CASE_NAME(); \
 	sates_test_run##TEST_CASE_NAME(); \
-	sates_test_terminate##TEST_CASE_NAME(); 
+	sates_test_terminate##TEST_CASE_NAME(); \
+	_staes_no_framework_terminate(#TEST_CASE_NAME);
+
 
 
 #ifdef __cplusplus
