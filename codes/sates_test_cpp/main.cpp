@@ -1,7 +1,8 @@
 #include <iostream>
 #include <sates/sates_test_cpp.h>
 #include <sates/os/tcp_client.h>
-
+#include <sates/os/sleep.h>
+#include <string.h>
 
 SATES_TEST_INIT(TEST)
 {
@@ -66,8 +67,7 @@ int main(int argc, char** argv)
 		memset(buffer, 0, 1024);
 		sprintf(buffer, "test message %d\n", count);
 		client.write((const int8_t*)buffer, 1024);
-		Sleep(3000);
-
+		sates::os::sleep(3000 * 1000);
 	}
 	
 	sates::testcode_list::print_result();

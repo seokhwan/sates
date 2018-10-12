@@ -17,18 +17,21 @@
 typedef HANDLE           sates_mutex_t;
 typedef SOCKET			 sates_sock_t;
 #else
-#include <signal.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <sys/wait.h>
-#include <unistd.h>
+#include <ctime>
 #include <fcntl.h>
 #include <pthread.h>
-#include <ctime>
+#include <signal.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #define SATES_EXPORT
 typedef pthread_mutex_t  sates_mutex_t;
+typedef int			     sates_sock_t;
+
 #endif
 
 #include <cstddef>
