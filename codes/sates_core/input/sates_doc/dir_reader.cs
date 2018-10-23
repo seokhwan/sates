@@ -49,14 +49,15 @@ namespace sates.input.sates_doc
             string curfile;
             try
             {
+                foreach (string f in Directory.GetFiles(cur_path))
+                {
+                    curfile = f;
+                    file_reader.read(root_path, f, doc_type);
+                }
+
                 foreach (string d in Directory.GetDirectories(cur_path))
                 {
                     curdir = d;
-                    foreach (string f in Directory.GetFiles(d))
-                    {
-                        curfile = f;
-                        file_reader.read(root_path, f, doc_type);
-                    }
                     dir_reader._read(root_path, d, doc_type);
                 }
             }

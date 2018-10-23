@@ -40,7 +40,7 @@ namespace sates.util
             byte[] buffer = new byte[PACKET_SIZE];
             int curtimeout = client.GetStream().ReadTimeout;
             // 타임아웃 10초 설정
-            client.GetStream().ReadTimeout = 10 * 1000;
+            //client.GetStream().ReadTimeout = 10 * 1000;
 
             int recvsize = client.GetStream().Read(buffer, 0, PACKET_SIZE);
             if (PACKET_SIZE != recvsize)

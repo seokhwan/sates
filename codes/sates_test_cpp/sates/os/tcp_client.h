@@ -23,10 +23,12 @@ namespace sates
 			bool connect(const char_t* p_local_ip_addr, const char_t* p_remote_ip_addr, uint16_t remote_port);
 			int32_t read(int8_t* p_buffer, int32_t read_size);
 			int32_t write(const int8_t* p_buffer, int32_t write_size);
+            bool is_connected() const;
 			void close();
 
 		protected:
 			sates_sock_t m_sock;
+            bool m_is_connected;
 		};
 	}
 }

@@ -28,6 +28,7 @@ static void net_init()
 tcp_client::tcp_client()
 {
 	net_init();
+    m_is_connected = false;
 	m_sock = INVALID_SOCKET;
 }
 
@@ -114,6 +115,10 @@ bool tcp_client::connect(const char_t* p_local_ip_addr, const char_t* p_remote_i
 				// exception
 				retval = false;
 			}
+            else
+            {
+                m_is_connected = true;
+            }
 		}
 	}
 	else
@@ -181,6 +186,11 @@ int32_t tcp_client::write(const int8_t* p_buffer, int32_t write_size)
 	return retVal;
 }
 
+bool tcp_client::is_connected() const
+{
+    return m_is_connected;
+}
+
 void tcp_client::close()
 {
 	if (INVALID_SOCKET != m_sock)
@@ -189,6 +199,7 @@ void tcp_client::close()
 		closesocket(m_sock);
 		m_sock = INVALID_SOCKET;
 	}
+    m_is_connected = false;
 }
 
 }

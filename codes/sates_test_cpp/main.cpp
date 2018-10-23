@@ -2,6 +2,7 @@
 #include <sates/sates_test_cpp.h>
 #include <sates/os/tcp_client.h>
 #include <sates/os/sleep.h>
+#include <sates/api_caller.h>
 #include <string.h>
 
 SATES_TEST_INIT(TEST)
@@ -54,22 +55,26 @@ SATES_TEST_TERMINATE(TEST3)
 
 int main(int argc, char** argv)
 {
-	//sates::test_list::include_test("TEST");
-	sates::testcode_list::run();
-	//SATES_TEST_RUN_MAIN_FUNC_RUN(TEST);
-	sates::os::tcp_client client;
-	client.connect("192.168.100.234", "192.168.100.234", 5000);
-	char buffer[1024];
-	int count = 0;
-	while (true)
-	{
-		count++;
-		memset(buffer, 0, 1024);
-		sprintf(buffer, "test message %d\n", count);
-		client.write((const int8_t*)buffer, 1024);
-		sates::os::sleep(3000 * 1000);
-	}
-	
+    std::string retval = sates::api_caller::call("doc_add", "spec", "cat1", "cat2");
+    std::cout << retval << std::endl;
+
+
+	////sates::test_list::include_test("TEST");
+	//sates::testcode_list::run();
+	////SATES_TEST_RUN_MAIN_FUNC_RUN(TEST);
+	//sates::os::tcp_client client;
+	//client.connect("192.168.100.234", "192.168.100.234", 5000);
+	//char buffer[1024];
+	//int count = 0;
+	//while (true)
+	//{
+	//	count++;
+	//	memset(buffer, 0, 1024);
+	//	sprintf(buffer, "test message %d\n", count);
+	//	client.write((const int8_t*)buffer, 1024);
+	//	sates::os::sleep(3000 * 1000);
+	//}
+	//
 	sates::testcode_list::print_result();
 	return 0;
 }

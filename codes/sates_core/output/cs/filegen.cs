@@ -36,6 +36,7 @@ namespace sates.output
     /// </summary>
     public class filegen
     {
+        private const string DEFAULT_GEN_NAME = "default";
         private static System.Collections.Hashtable table = new System.Collections.Hashtable();
         private static bool is_created = false;
         public static void create()
@@ -45,6 +46,7 @@ namespace sates.output
                 table["fmea"] = new cs.fmea_writer();
                 table["spec"] = new cs.spec_writer();
                 table["testcase"] = new cs.testcase_writer();
+                table[DEFAULT_GEN_NAME] = new cs.default_writer();
             }
         }
         public static void generate(string root_dir_path)
@@ -52,15 +54,18 @@ namespace sates.output
             create();
             foreach (var doc_item in sates.core.doc_list.get_list())
             {
+                string doc_type;
                 if (table.ContainsKey(doc_item.doc_type))
                 {
-                    writer wr = (writer)table[doc_item.doc_type];
-                    wr.write(root_dir_path, doc_item);
+                    doc_type = doc_item.doc_type;
                 }
                 else
                 {
-                    throw new Exception("unknown doc type");
+                    doc_type = DEFAULT_GEN_NAME;
                 }
+
+                writer wr = (writer)table[doc_type];
+                wr.write(root_dir_path, doc_item);
             }
         }
     }

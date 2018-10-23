@@ -26,13 +26,13 @@ namespace sates.input.api
 
     /**
     @revision
-    |  날짜  | 내용  | 담당자   | 검수자  | 
+    |  Date | Log | Written by | Confirmed By | 
     |------------|------------|------------|------------|
-    |2018년 8월 22일 | 최초작성 | 김석환  |  사용자  |
+    | 22b Aug 2018 | Drafted | Seokhwan Kim |  User |
      */
 
     /// <summary>
-    /// 지정된 directory 에 doxygen 관련 스크립트를 생성한다.
+    /// It generates doxygen scripts from the given directories.
     /// </summary>
     public class generate_doxygen
     {
