@@ -4,7 +4,7 @@
 |  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
 
 @title
-Various input and output types
+다양한 입출력 포멧
 
 @author
 Seokhwan Kim
@@ -12,9 +12,9 @@ Seokhwan Kim
 @date
 
 @desc
-The SATES shall be able to get input with different type (e.g., xml, json, or code)
-and, also generates a report at different format (e.g., xml, json, or doxygen)
-    
+SATES 는 XML, Json 과 같은 형식을 읽을 수 있어야 하며, 또한 그와 같은 형식으로
+출력이 가능해야 한다.
+
 
 @benefit
 

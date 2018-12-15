@@ -85,6 +85,19 @@ namespace sates.core
             }
             return retval;
         }
+
+        public static void cross_ref_gen()
+        {
+            foreach (doc item in docs.Values)
+            {
+                item.cross_ref_gen1();
+            }
+
+            foreach (doc item in docs.Values)
+            {
+                item.cross_ref_gen2();
+            }
+        }
     }
     /** @} */
     /** @} */

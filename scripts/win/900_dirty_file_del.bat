@@ -31,6 +31,7 @@ rmdir example\java_test\out /s /q
 rmdir example\java_code\out /s /q
 rmdir example\javaout /s /q
 
+rmdir codes\sates_test_cpp\.vs /s /q
 
 
 rmdir codes\sates_test_java\out /s /q

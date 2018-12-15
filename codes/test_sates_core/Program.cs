@@ -37,13 +37,14 @@ namespace TESTCODE
             {
                 System.IO.Directory.Delete(common_data.DEFAULT_PATH + "/outfiles", true);
             }
-            sates.test.cs.api_caller.call("generate_doc", common_data.DEFAULT_PATH + "/outfiles");
+            sates.test.cs.api_caller.call("generate_doc", "cs", common_data.DEFAULT_PATH + "/outfiles");
             sates.test.cs.api_caller.call("source_copy_csharp", common_data.DEFAULT_PATH + "/codes", common_data.DEFAULT_PATH + "/outfiles/CODE");
 
 
             if (sates.core.OS_NAME.UBUNTU == sates.core.os_setting.OS)
             {
                 sates.test.cs.api_caller.call("generate_doxygen",
+                    "cs",
                     common_data.DEFAULT_PATH + "/deps_common",
                     common_data.DEFAULT_PATH + "/outfiles",
                     common_data.DEFAULT_PATH + "/resource/doxy");
@@ -51,6 +52,7 @@ namespace TESTCODE
             else if (sates.core.OS_NAME.WINDOWS == sates.core.os_setting.OS)
             {
                 sates.test.cs.api_caller.call("generate_doxygen",
+                    "cs",
                     common_data.DEFAULT_PATH + "/deps_win",
                     common_data.DEFAULT_PATH + "/deps_common",
                     common_data.DEFAULT_PATH + "/outfiles",

@@ -25,6 +25,14 @@ namespace sates.output.cs
     /** \addtogroup cs
     *  @{
     */
+
+    /**
+    @revision
+    |  날짜  | 내용  | 담당자   | 검수자  | 
+    |------------|------------|------------|------------|
+    |2018년 12월 15일 | Revision 내용 생성 | 김석환  |  사용자  |
+    */
+
     /// <summary>
     /// 코드 주석 내 참조하는 Unique ID 에 namespace 를 추가한다.
     /// </summary>

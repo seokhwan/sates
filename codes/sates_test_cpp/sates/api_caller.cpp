@@ -2,10 +2,12 @@
 #include <sates/os/tcp_client.h>
 #include <sates/util/string_transfer.h>
 
+#include <iostream>
+
 namespace sates
 {
     static os::tcp_client client;
-    static std::string build_simple_json(std::vector<std::string>& funcvec)
+    static std::string build_simple_json(const std::vector<std::string>& funcvec)
     {
         std::string retval;
         retval = "[\n";
@@ -13,10 +15,11 @@ namespace sates
         retval += "    \"api\":\"";
         retval += funcvec[0U];
         retval += "\",\n";
-        retval += "    \"args\":[";
+        retval += "    \"args\":\n";
+        retval += "    [\n";
         for (size_t i = 1U; i < funcvec.size(); ++i)
         {
-            retval += "\"";
+            retval += "        \"";
             retval += funcvec[i];
             retval += "\"";
 
@@ -24,10 +27,14 @@ namespace sates
             {
                 retval += ", ";
             }
+            retval += "\n";
         }
-        retval += "]\n";
+        retval += "    ]\n";
         retval += "  }\n";
         retval += "]\n";
+
+        std::cout << retval << std::endl;
+
         return retval;
     }
     static void puch_func_info(std::vector<std::string>& funcvec, const char_t* p_data)
@@ -84,6 +91,17 @@ namespace sates
 
         return retval;
     }
-}
 
+    std::string api_caller::call(const std::vector<std::string>& call_info)
+    {
+        std::string retval = "OK";
+
+        auto cmd_string = build_simple_json(call_info);
+
+        sates::util::string_transfer::send(&client, cmd_string);
+        sates::util::string_transfer::receive(&client, retval);
+
+        return retval;
+    }
+}
 

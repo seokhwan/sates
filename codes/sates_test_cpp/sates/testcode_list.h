@@ -2,6 +2,7 @@
 #define __SATES_TESTCODE_LIST_H__
 
 #include <sates/testcode.h>
+#include <sates/report/reporter.h>
 #include <vector>
 
 namespace sates
@@ -19,6 +20,8 @@ namespace sates
 
 		static void run();
 		static void print_result();
+
+        static void set_reporter(sates::report::reporter* p_reporter);
 	};
 }
 

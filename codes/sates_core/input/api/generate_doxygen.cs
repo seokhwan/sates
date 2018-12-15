@@ -36,29 +36,29 @@ namespace sates.input.api
     /// </summary>
     public class generate_doxygen
     {
-        protected static void common_routine(string outpath)
+        protected static void common_routine(string langname, string outpath)
         {
-            sates.output.filegen.generate(outpath);
+            sates.output.common.filegen.generate(langname, outpath);
         }
         protected static void set(string[] dirpath)
         {
             if (sates.core.OS_NAME.UBUNTU == sates.core.os_setting.OS)
             {
-                common_routine(dirpath[1]);
+                common_routine(dirpath[0], dirpath[1]);
                 sates.output.doxy.doxyrun_gen_ubuntu.generate(
                     null,
-                    dirpath[0],
-                    dirpath[1],
-                    dirpath[2]);
-            }
-            else if (sates.core.OS_NAME.WINDOWS == sates.core.os_setting.OS)
-            {
-                common_routine(dirpath[2]);
-                sates.output.doxy.doxyrun_gen_win.generate(
-                    dirpath[0],
                     dirpath[1],
                     dirpath[2],
                     dirpath[3]);
+            }
+            else if (sates.core.OS_NAME.WINDOWS == sates.core.os_setting.OS)
+            {
+                common_routine(dirpath[0], dirpath[2]);
+                sates.output.doxy.doxyrun_gen_win.generate(
+                    dirpath[1],
+                    dirpath[2],
+                    dirpath[3],
+                    dirpath[4]);
             }
         }
         public static string call(api_cmd cmd_data)

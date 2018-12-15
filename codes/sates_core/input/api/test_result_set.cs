@@ -36,10 +36,19 @@ namespace sates.input.api
     /// </summary>
     public class test_result_set
     {
-        protected static void set(string test_case_name, string result, string[] errlog)
+        protected static string set(string test_case_name, string result, string[] errlog)
         {
-            sates.core.doc_list.get(test_case_name).set_info("test_result", result);
-            sates.core.doc_list.get(test_case_name).set_info("test_fail_log", errlog);
+            var doc = sates.core.doc_list.get(test_case_name);
+            if (null != doc)
+            {
+                doc.set_info("test_result", result);
+                doc.set_info("test_fail_log", errlog);
+                return "OK";
+            }
+            else
+            {
+                return "Test Case Not Found";
+            }
         }
         public static string call(api_cmd cmd_data)
         {
@@ -52,9 +61,9 @@ namespace sates.input.api
                     errlog[i - 2] = cmd_data.args[i];
                 }
             }
-            set(cmd_data.args[0], cmd_data.args[1], errlog);
+            var ret_msg = set(cmd_data.args[0], cmd_data.args[1], errlog);
 
-            return "OK";
+            return ret_msg;
         }
     }
     /** @} */

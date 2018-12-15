@@ -3,11 +3,39 @@
 #include <sates/internal_use/common_func.h>
 #include <sates/internal_use/test_log.h>
 #include <sates/sates_test_cpp_deploy.h>
+#include <algorithm>
 
 namespace sates
 {
 	namespace internal_use
 	{
+        static sates::report::reporter* g_p_reporter = nullptr;
+
+        static void report(testcode* p_code)
+        {
+            if (nullptr != g_p_reporter)
+            {
+                std::vector<std::string> func_call_vec;
+                func_call_vec.push_back("test_result_set");
+                func_call_vec.push_back(p_code->get_test_case_name());
+                if (test_log::is_err_occurred())
+                {
+                    func_call_vec.push_back("FAILURE");
+                    for (auto iter : p_code->get_err_log())
+                    {
+                        std::replace(iter.begin(), iter.end(), '\\', '/');
+                        func_call_vec.push_back(iter);
+                    }
+                }
+                else
+                {
+                    func_call_vec.push_back("OK");
+                }
+
+                g_p_reporter->report(func_call_vec);
+            }
+        }
+
 		static void run_one_test_case(testcode* p_code)
 		{
 			test_log::start_new_test();
@@ -35,6 +63,7 @@ namespace sates
 			{
 				p_code->set_result(sates::TEST_RESULT::OK);
 			}
+            report(p_code);
 		}
 
 		static void run_inc_test(
@@ -100,8 +129,11 @@ namespace sates
 
 		void test_runner::run(std::vector<std::string>* p_inc_list,
 			std::vector<std::string>* p_exc_list,
-			std::map<std::string, sates::testcode*>* p_map)
+			std::map<std::string, sates::testcode*>* p_map,
+            sates::report::reporter* p_reporter)
 		{
+            g_p_reporter = p_reporter;
+
 			if (p_inc_list->size() > 0U)
 			{
 				run_inc_test(p_inc_list, p_map);

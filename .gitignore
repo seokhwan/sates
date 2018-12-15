@@ -1,9 +1,0 @@
-#Java
-*.class
-*.java
-
-deps_common
-deps_win
-build
-codes/.vs
-obj

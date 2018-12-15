@@ -22,6 +22,8 @@ namespace sates
             const char_t* arg8 = nullptr,
             const char_t* arg9 = nullptr,
             const char_t* arg10 = nullptr);
+
+        static std::string call(const std::vector<std::string>& call_info);
 	};
 }
 

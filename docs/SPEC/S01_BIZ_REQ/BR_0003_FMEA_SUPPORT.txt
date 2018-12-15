@@ -13,5 +13,7 @@ Seokhwan Kim
 
 @desc
 FMEA (Failure Mode and Effects Analysis)) 지원
+현재 pending 상태
 
 @child_spec
+RU_0300_ADD_FAILURE_MODE

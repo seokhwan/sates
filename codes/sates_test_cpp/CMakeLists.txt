@@ -2,6 +2,7 @@
 SET(VC "yes")
 
 SET(LIB_BUILD "yes")
+add_definitions(-DSATES_FRAMEWORK_INCLUDED)
 
 set(outdir ${CMAKE_SOURCE_DIR}/../../build/${CMAKE_BUILD_TYPE})
 
@@ -27,6 +28,9 @@ source_group(sates\\os FILES ${os_file})
 file(GLOB util_file ${CMAKE_SOURCE_DIR}/sates/util/*)
 source_group(sates\\util FILES ${util_file})
 
+file(GLOB report_file ${CMAKE_SOURCE_DIR}/sates/report/*)
+source_group(sates\\report FILES ${report_file})
+
 if (GCC)
 	file(GLOB os_dept_file ${CMAKE_SOURCE_DIR}/sates/os/linux/*)
 	source_group(sates\\os\\linux FILES ${os_dept_file})
@@ -40,9 +44,9 @@ endif()
 include_directories(${CMAKE_SOURCE_DIR})
 
 if(LIB_BUILD)
-	add_library(sates_test_cpp ${sates_file} ${internal_use_file} ${os_file} ${os_dept_file} ${util_file})
+	add_library(sates_test_cpp ${sates_file} ${internal_use_file} ${os_file} ${os_dept_file} ${util_file} ${report_file})
 else()
-	add_executable(sates_test_cpp ${sates_file} ${internal_use_file} ${os_file} ${os_dept_file} ${util_file} main.cpp)
+	add_executable(sates_test_cpp ${sates_file} ${internal_use_file} ${os_file} ${os_dept_file} ${util_file} ${report_file} main.cpp)
 endif()
 
 

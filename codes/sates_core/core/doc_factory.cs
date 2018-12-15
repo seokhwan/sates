@@ -38,7 +38,15 @@ namespace sates.core
         public static void create(string uniq_id, string doc_type, Queue<string> category_info = null)
         {
             doc_list.remove(uniq_id);
-            doc doc_instance = new doc(uniq_id, doc_type);
+            doc doc_instance = null;
+            if (doc_type == "spec")
+            {
+                doc_instance = new doc_spec(uniq_id, doc_type);
+            }
+            else
+            {
+                doc_instance = new doc(uniq_id, doc_type);
+            }
             doc_instance.category_info = category_info;
             doc_list.add(doc_instance);
         }

@@ -57,7 +57,6 @@ namespace sates.core.setter
                 table.Add(INFO_TYPE.DOUBLE, new double_setter());
                 table.Add(INFO_TYPE.LONG, new long_setter());
                 table.Add(INFO_TYPE.MULTI_LINE_STRING, new mul_line_str_setter());
-                table.Add(INFO_TYPE.SINGLE_LINE_STRING, new single_line_str_setter());
             }
         }
         public static void register_setter(setter setter_instance)

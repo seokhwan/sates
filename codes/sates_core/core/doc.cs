@@ -100,6 +100,13 @@ namespace sates.core
             return retval;
         }
 
+        public void set_info(string info_name, string val)
+        {
+            add_info(info_name, INFO_TYPE.MULTI_LINE_STRING);
+            info infovar = (info)_info_table[info_name];
+            infovar.set(val);
+        }
+
         public void set_info(string info_name, long val)
         {
             add_info(info_name, INFO_TYPE.LONG);
@@ -110,13 +117,6 @@ namespace sates.core
         public void set_info(string info_name, double val)
         {
             add_info(info_name, INFO_TYPE.DOUBLE);
-            info infovar = (info)_info_table[info_name];
-            infovar.set(val);
-        }
-
-        public void set_info(string info_name, string val)
-        {
-            add_info(info_name, INFO_TYPE.SINGLE_LINE_STRING);
             info infovar = (info)_info_table[info_name];
             infovar.set(val);
         }
@@ -141,6 +141,12 @@ namespace sates.core
                 _info_table.Add(info_name, new info(info_name, info_type));
             }
         }
+
+        public virtual void cross_ref_gen1()
+        {}
+
+        public virtual void cross_ref_gen2()
+        { }
     }
     /** @} */
     /** @} */

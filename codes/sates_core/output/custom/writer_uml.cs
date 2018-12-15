@@ -48,20 +48,11 @@ namespace sates.output.custom
             wr.WriteLine("    @diag");
             wr.WriteLine("");
             wr.WriteLine("    @startuml");
-            if (sates.core.INFO_TYPE.SINGLE_LINE_STRING == info_var.info_type)
+            info_var.get(out Queue<string> strs);
+            foreach (var str in strs)
             {
-                info_var.get(out string str);
                 wr.Write("    ");
                 wr.WriteLine(str);
-            }
-            else
-            {
-                info_var.get(out Queue<string> strs);
-                foreach (var str in strs)
-                {
-                    wr.Write("    ");
-                    wr.WriteLine(str);
-                }
             }
 
             wr.WriteLine("    @enduml");

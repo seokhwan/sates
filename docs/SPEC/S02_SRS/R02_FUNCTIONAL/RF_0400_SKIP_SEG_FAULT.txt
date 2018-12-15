@@ -1,0 +1,39 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+Segmentation Fault 스킵하기
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+Test Case 역시 하나의 소프트웨어이다. 그리고, 이 소프트웨어 역시 버그가 있을 수 있고,
+그 중 segmentation fault 가 발생할 수 있다. 장시간 테스트의 실행 도중 segmentation
+fault 로 인해, 테스트가 멈춘다는 것은 무척 불행한 일이다.
+
+이를 방지하기 위해, segmentation fault 가 발생하는 경우, 시스템은 해당 테스트
+케이스를 조용히 넘기고, 다음 테스트 케이스를 실행해야 한다.
+    
+
+@benefit
+
+@penalty
+
+@cost
+
+@risk
+
+@parent_spec
+
+@child_spec
+
+@test_case
+
+@fmea
+
+@constraint

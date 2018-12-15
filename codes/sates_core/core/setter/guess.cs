@@ -49,16 +49,8 @@ namespace sates.core.setter
                 }
             }
 
-            // if the string with more than one valid lines,
-            // it shall be a multiline string
-            if (string_line_cnt > 1)
+            if (1 == string_line_cnt)
             {
-                retval = INFO_TYPE.MULTI_LINE_STRING;
-            }
-
-            if (INFO_TYPE.INVALID == retval)
-            {
-                string_line_cnt = 0;
                 string trimmed_line = "";
                 foreach (var line in val)
                 {
@@ -80,11 +72,13 @@ namespace sates.core.setter
                 {
                     retval = INFO_TYPE.DOUBLE;
                 }
-                // otherwise, it shall be a string
-                else
-                {
-                    retval = INFO_TYPE.SINGLE_LINE_STRING;
-                }
+            }
+
+            // If it fails to parse it long / double type,
+            // it is multiline string.
+            if (INFO_TYPE.INVALID == retval)
+            {
+                retval = INFO_TYPE.MULTI_LINE_STRING;
             }
 
             return retval;

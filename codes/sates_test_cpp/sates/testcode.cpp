@@ -11,26 +11,31 @@
 
 namespace sates
 {
-	testcode::testcode() 
-	{
-		m_test_case_name = "";
-		m_result = TEST_RESULT::INVALID;
-	}
+    testcode::testcode()
+    {
+        m_test_case_name = "";
+        m_result = TEST_RESULT::INVALID;
+    }
 
-	testcode::~testcode() {}
-	void testcode::init() {}
-	void testcode::run() {}
-	void testcode::terminate() {}
+    testcode::~testcode() {}
+    void testcode::init() {}
+    void testcode::run() {}
+    void testcode::terminate() {}
 
-	void testcode::set_result(TEST_RESULT test_result)
-	{
-		m_result = test_result;
-	}
+    void testcode::set_result(TEST_RESULT test_result)
+    {
+        m_result = test_result;
+    }
 
-	void testcode::add_err_log(const std::string& err_msg)
-	{
-		m_err_logs.push_back(err_msg);
-	}
+    void testcode::add_err_log(const std::string& err_msg)
+    {
+        m_err_logs.push_back(err_msg);
+    }
+
+    const std::vector<std::string>& testcode::get_err_log() const
+    {
+        return m_err_logs;
+    }
 
 	TEST_RESULT testcode::get_result() const
 	{

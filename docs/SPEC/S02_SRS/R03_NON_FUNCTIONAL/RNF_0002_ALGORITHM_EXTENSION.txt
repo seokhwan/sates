@@ -4,7 +4,7 @@
 |  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
 
 @title
-Extensible Algorithms
+알고리즘 Extension 기능
 
 @author
 Seokhwan Kim
@@ -12,24 +12,11 @@ Seokhwan Kim
 @date
 
 @desc
-The algorithms shall be extensible. Users shall be able to add new variables
-and algorithms that process an another values from the new variables.
-    
-
-@benefit
-
-@penalty
-
-@cost
-
-@risk
+RF_0600_SPEC_CHANGE_COST 등을 지원하기 위해서는 알고리즘의 extension 제작이
+가능해야 한다. 즉, plugin 과 같은 형태로 알고리즘의 extension 을 추가할 수 
+있어야 한다.
 
 @parent_spec
 
 @child_spec
 
-@test
-
-@fmea
-
-@constraint

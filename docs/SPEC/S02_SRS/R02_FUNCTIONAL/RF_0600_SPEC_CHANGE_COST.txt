@@ -1,0 +1,38 @@
+@revision
+|  날짜  | 내용  | 담당자   | 검수자  | 
+|------------|------------|------------|------------|
+|  2018년 7월 27일 | 개정 이력 추가  | 김석환  |  사용자  |
+
+@title
+SPEC 변경 Cost 계산
+
+@author
+Seokhwan Kim
+
+@date
+
+@desc
+Software 의 SRS, Use Case 와 같은 SPEC 을 변경하는 것은 비용을 수반한다.
+그 비용은 관련 SPEC (즉, 이 SRS와 관련이 있는 SRS) 과 그에 관련한 테스트 및
+구현의 수정의 비용이다. 당연히 영향도가 큰 (즉 많은 관련을 갖고 있는) SPEC일수록
+그 비용은 크다. 이러한 비용을 자동으로 계산할 수 있어야 한다.
+    
+
+@benefit
+
+@penalty
+
+@cost
+
+@risk
+
+@parent_spec
+
+@child_spec
+
+@test
+
+@fmea
+
+@constraint
+

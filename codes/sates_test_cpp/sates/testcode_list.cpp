@@ -1,6 +1,7 @@
 #include <sates/testcode_list.h>
 #include <sates/internal_use/test_list_editor.h>
 #include <sates/internal_use/test_runner.h>
+
 #include <map>
 #include <vector>
 
@@ -9,6 +10,7 @@ namespace sates
 
 typedef std::map<std::string, testcode*> code_map_t;
 static code_map_t* p_testcode_map = nullptr;
+static sates::report::reporter* g_p_reporter = nullptr;
 
 void testcode_list::create()
 {
@@ -80,10 +82,11 @@ void testcode_list::exclude_testcode(const char_t* p_test_case_name)
 
 void testcode_list::run()
 {
-	sates::internal_use::test_runner::run(
-		sates::internal_use::test_list_editor::get_include_list(),
-		sates::internal_use::test_list_editor::get_exclude_list(),
-		p_testcode_map);
+    sates::internal_use::test_runner::run(
+        sates::internal_use::test_list_editor::get_include_list(),
+        sates::internal_use::test_list_editor::get_exclude_list(),
+        p_testcode_map,
+        g_p_reporter);
 }
 
 void testcode_list::print_result()
@@ -92,6 +95,11 @@ void testcode_list::print_result()
 	{
 		item.second->print();
 	}
+}
+
+void testcode_list::set_reporter(sates::report::reporter* p_reporter)
+{
+    g_p_reporter = p_reporter;
 }
 
 }

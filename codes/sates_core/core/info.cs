@@ -30,7 +30,6 @@ namespace sates.core
         INVALID,
         LONG,
         DOUBLE,
-        SINGLE_LINE_STRING,
         MULTI_LINE_STRING
     }
 
@@ -47,7 +46,6 @@ namespace sates.core
     public class info
     {
         private Queue<string> _multiline = null;
-        private string _singleline;
         long _int_data;
         double _double_data;
 
@@ -65,18 +63,20 @@ namespace sates.core
             }
             
         }
-
-        public void set(string singleline_val)
+        public void set(string multiline_val)
         {
-            this._singleline = singleline_val;
+            this._multiline.Clear();
+            this._multiline.Enqueue(multiline_val);
         }
-
         public void set(Queue<string> multiline_val)
         {
             this._multiline.Clear();
             for (int i=0; i<multiline_val.Count; i++)
             {
-                this._multiline.Enqueue(multiline_val.ElementAt(i));
+                if (multiline_val.ElementAt(i).Count() > 0)
+                {
+                    this._multiline.Enqueue(multiline_val.ElementAt(i));
+                }
             }
         }
         public void set(string[] multiline_val)
@@ -86,7 +86,10 @@ namespace sates.core
                 this._multiline.Clear();
                 for (int i = 0; i < multiline_val.Length; i++)
                 {
-                    this._multiline.Enqueue(multiline_val[i]);
+                    if (multiline_val[i].Count() > 0)
+                    {
+                        this._multiline.Enqueue(multiline_val[i]);
+                    }
                 }
             }
         }
@@ -100,12 +103,7 @@ namespace sates.core
         {
             this._double_data = double_val;
         }
-
-        public void get(out string singleline_val)
-        {
-            singleline_val = this._singleline;
-        }
-
+        
         public void get(out Queue<string> multiline_val)
         {
             multiline_val = new Queue<string>();

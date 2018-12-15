@@ -129,7 +129,7 @@ namespace sates.input
                     }
                     else
                     {
-                        System.Console.WriteLine(excep.ToString());
+                        System.Console.WriteLine("excep source : " + excep.Source + ", " +excep.ToString());
                     }
                     b_is_running = false;
                 }

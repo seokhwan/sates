@@ -31,6 +31,7 @@ namespace sates
 
 		void set_result(TEST_RESULT test_result);
 		void add_err_log(const std::string& err_msg);
+        const std::vector<std::string>&  get_err_log() const;
 		TEST_RESULT get_result() const;
 
 		const char_t* get_test_case_name() const;
